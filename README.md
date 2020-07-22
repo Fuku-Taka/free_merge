@@ -90,9 +90,7 @@
 |status|integer|null: false|
 |content_id|references|null: false, foreign_key: true|
 
-### Association
 
-- has_many :contents
 
 ### Association
 
@@ -130,14 +128,6 @@
 
 - has_many :contents
 
-## statusesテーブル
-
-|Column|Type|Options|
-|------|----|-------|
-|status|integer|null: false|
-|content_id|references|null: false, foreign_key: true|
-
-### Association
 
 ## shipmentテーブル
 
