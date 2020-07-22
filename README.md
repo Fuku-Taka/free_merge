@@ -90,6 +90,8 @@
 |status|integer|null: false|
 |content_id|references|null: false, foreign_key: true|
 
+### Association
+
 - has_many :contents
 
 ### Association
