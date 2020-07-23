@@ -20,8 +20,8 @@
 |birthday|date|null: false|
 
 ### Association
-- belongs_to :address
-- belongs_to :credit-card
+- belongs_to :address, dependent: :destroy
+- belongs_to :credit-card, dependent: :destroy
 - has_many :contents
 
 
@@ -80,7 +80,7 @@
 - belongs_to :shipment
 - belongs_to :category
 - belongs_to :user
-- has_many :images
+- has_many :images, dependent: :destroy
 
 
 ## statusesテーブル
