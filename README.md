@@ -21,7 +21,7 @@
 
 ### Association
 - belongs_to :address, dependent: :destroy
-- belongs_to :credit-card, dependent: :destroy
+- belongs_to :credit_card, dependent: :destroy
 - has_many :contents
 
 
