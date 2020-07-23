@@ -39,7 +39,7 @@
 ### Association
 - belongs_to :user
 
-## Credit-cardsテーブル
+## Credit_cardsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
@@ -65,7 +65,7 @@
 |explain|text|null: false|
 |status_id|references|null: false, foreign_key: true|
 |size_id|references|null: false, foreign_key: true|
-|postage_id|references|null: false, foreign_key: true|
+|postage|string|null: false|
 |prefecture_id|references|null: false, foreign_key: true|
 |shipment_id|references|null: false, foreign_key: true|
 |brand|string||
@@ -75,7 +75,6 @@
 
 - belongs_to :status
 - belongs_to :size
-- belongs_to :postage
 - belongs_to :prefecture
 - belongs_to :shipment
 - belongs_to :category
@@ -88,7 +87,6 @@
 |Column|Type|Options|
 |------|----|-------|
 |status|integer|null: false|
-|content_id|references|null: false, foreign_key: true|
 
 
 
@@ -101,28 +99,18 @@
 |Column|Type|Options|
 |------|----|-------|
 |size|string|null: false|
-|content_id|references|null: false, foreign_key: true|
+
 
 ### Association
 
 - has_many :contents
 
-## postagesテーブル
 
-|Column|Type|Options|
-|------|----|-------|
-|postage|string|null: false|
-|content_id|references|null: false, foreign_key: true|
-
-### Association
-- has_many :contents
-
-## prefecturesテーブル
+## prefectures(active_hash)テーブル
 
 |Column|Type|Options|
 |------|----|-------|
 |prefecture|string|null: false|
-|content_id|references|null: false, foreign_key: true|
 
 ### Association
 
@@ -134,7 +122,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |shipment|string|null: false|
-|content_id|references|null: false, foreign_key: true|
+
 
 ### Association
 - has many :contents
