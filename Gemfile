@@ -67,5 +67,9 @@ group :production do
   gem 'unicorn'
 end
 
-
-
+gem 'devise'
+gem 'mini_magick'
+gem 'carrierwave'
+gem 'active_hash'
+gem 'payjp'
+gem 'ancestry'
