@@ -1,17 +1,5 @@
 %body
-  %header
-    .HeaderItems
-      = link_to image_tag('material/logo/logo.png', class: "HeaderLogo"), root_path
-      %input.SearchForm{:name => "keyword", :placeholder => "キーワードから探す", :type => "text"}/
-      %button.SearchBtn{:name => "btn", :placeholder => "検索", :type => "submit"}
-        = image_tag 'material/icon/icon-search1.png', class: "BtnImage"
-    .HeaderInfo
-      .ContentGroup
-        =link_to "カテゴリー", root_path, class: "Categorie"
-        =link_to "ブランド", root_path, class: "Brand"
-      .LoginSignin
-        =link_to "ログイン", root_path, class: "Login"
-        =link_to "新規会員登録", root_path, class: "Signin"
+  = render "header"
   .Main
     .Mainvisual
       .Mainvisual__info
@@ -207,50 +195,8 @@
                       = icon('fa', 'star')
                       0
                   %p (税込)
-    %aside.AppBanner
-      .BannerInner
-        %h2.BannerInner__title
-          だれでもかんたん、人生を変えるフリマアプリ
-        %p.BannerInner__text
-          今すぐ無料ダウンロード！
-        .BannerInner__icon
-          = link_to "#" do
-            = image_tag "material/logo/app-store.svg", class: "BannerInner__icon"
-          = link_to "#" do
-            = image_tag "material/logo/google-play.svg", class: "BannerInner__icon"
-  %footer
-    %ul.Footer__contents
-      %li.Content
-        %h2.Content__head FURIMAについて
-        %ul
-          %li
-            = link_to "会社概要（運営会社）", "#"
-          %li
-            = link_to "プライバシーポリシー", "#"
-          %li
-            = link_to "FURIMA利用規約", "#"
-          %li
-            = link_to "ポイントに関する特約", "#"
-      %li.Content
-        %h2.Content__head FURIMAを見る
-        %ul
-          %li
-            = link_to "カテゴリー一覧", "#"
-          %li
-            = link_to "ブランド一覧", "#"
-      %li.Content
-        %h2.Content__head ヘルプ＆ガイド
-        %ul
-          %li
-            = link_to "FURIMAガイド", "#"
-          %li
-            = link_to "FURIMAロゴ利用ガイドライン", "#"
-          %li
-            = link_to "お知らせ", "#"
-    .Footer__logo
-      = link_to "#" do
-        = image_tag "material/logo/logo-white.png"
-    %p © FURIMA
+    = render "app_banner"
+  = render "footer"
   = link_to "#" do
     .PurchaseBtn
       %span.PurchaseBtn__text
