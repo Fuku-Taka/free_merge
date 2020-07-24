@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'contents#show'
+  root 'contents#index'
   
   resources :users, only: [:show, :edit, :update]
 
