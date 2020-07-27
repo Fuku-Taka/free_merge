@@ -74,3 +74,4 @@ gem 'active_hash'
 gem 'payjp'
 gem 'ancestry'
 gem "font-awesome-sass"
+gem "jp_prefecture"
