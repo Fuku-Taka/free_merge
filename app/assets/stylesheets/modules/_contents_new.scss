@@ -1,0 +1,199 @@
+.ContentsNew {
+  color: rgb(51, 51, 51);
+  .FormBox {
+    color: #222;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    height: 48px;
+    outline: none;
+    padding: 0 16px;
+    margin-top: 16px;
+    width: 100%;
+    line-height: 48px;
+  }
+  .TextArea {
+    color: #222;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    outline: none;
+    margin-top: 16px;
+    width: 100%;
+    padding: 13px 16px;
+    height: 154px;
+  }
+  .Error {
+    color: #ff0211;
+    font-size: 14px;
+    line-height: 1.4em;
+  }
+  .ContentsNew__topWrapper {
+    text-align: center;
+    padding: 40px 0;
+    img {
+      height: 49px;
+    }
+  }
+  .ContentsNew__middleWrapper {
+    .ExhibitionForm {
+      background-color: rgb(255, 255, 255);;
+      max-width: 700px;
+      margin: 0px auto;
+      hr {
+        border-top: 1px solid #efefef;
+        border-left: 0 solid #efefef;
+        border-bottom: 0 solid #efefef;
+        border-right: 0 solid #efefef;
+        margin: 0;
+      }
+      .FormTitle {
+        color: rgb(136, 136, 136);
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 1.4em;
+      }
+      .ExhibitionForm__normal {
+        padding: 40px;
+      }
+      .NotFirstChild {
+        margin-top: 32px;
+      }
+      .PriceChild {
+        margin-top: 24px;
+      }
+      .ExhibitionForm__body {
+        label {
+          font-size: 14px;
+          font-weight: 600;
+          line-height: 1.4em;
+        }
+        .Required {
+          margin-left: 8px;
+          font-size: 12px;
+          padding: 0 4px;
+          background-color: #ff0211;
+          color: #fff;
+          border-radius: 2px;
+          display: inline-block;
+          font-style: normal;
+          font-weight: 600;
+          line-height: 1.4em;
+          margin: 0;
+        }
+        .Any {
+          margin-left: 8px;
+          font-size: 12px;
+          padding: 0 4px;
+          background-color: #bfbfbf;
+          color: #fff;
+          border-radius: 2px;
+          display: inline-block;
+          font-style: normal;
+          font-weight: 600;
+          line-height: 1.4em;
+          margin: 0;
+        }
+        .PhotosMiddle {
+          margin-top: 16px;
+          .PhotosMiddle__text {
+            font-size: 14px;
+            line-height: 1.4em;
+          }
+        }
+        .PhotosBottom {
+          height: 150px;
+          margin-top: 24px;
+          background-color: rgb(245, 245, 245);
+          border: 1px dashed rgb(204, 204, 204);
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          i {
+            color: rgb(34, 34, 34);
+            font-size: 24px;
+            margin-bottom: 8px;
+          }
+          p {
+            font-size: 12px;
+            line-height: 1.4em;
+            text-align: center;
+          }
+        }
+        .ExplanationCounter {
+          margin-top: 16px;
+          color: #888;
+          font-size: 12px;
+          line-height: 1.4em;
+          text-align: right;
+        }
+        .PriceBody {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          .PriceRight {
+            display: flex;
+            align-items: center;
+            .FormBox {
+              margin: 0;
+              width: 285px;
+              text-align: right;
+            }
+            h3 {
+              font-size: 14px;
+              margin-right: 8px;  
+            }
+          }
+        }
+      }
+      .ExhibitionForm__exhibition {
+        margin: 0px auto 32px;
+        width: 360px;
+        .ExhibitionBtn {
+          background-color: #3ccace;
+          color: #fff;
+          font-size: 17px;
+          line-height: 48px;
+          min-height: 48px;
+          width: 100%;
+          padding: 0 24px;
+          border-radius: 4px;
+          border: 1px solid transparent;
+          box-sizing: border-box;
+          display: inline-block;
+          font-weight: 600;
+          overflow: hidden;
+          text-align: center;
+          text-decoration: none;
+          vertical-align: middle;
+          white-space: nowrap;
+          word-break: break-word;
+          margin-bottom: 24px;
+        }
+        .Return {
+          color: #0095ee;
+          text-align: center;
+          text-decoration: none;
+          height: 20px;
+        }
+      }
+      .ExhibitionForm__precautions {
+        margin: 0px 40px;
+        padding-bottom: 64px;
+        .PrecautionsText {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+  .ContentsNew__bottomWrapper {
+    padding: 40px 0px 41px;
+    text-align: center;
+    img {
+      height: 80px;
+    }
+  }
+}
