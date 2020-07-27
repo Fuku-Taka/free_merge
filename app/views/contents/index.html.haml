@@ -1,200 +1,199 @@
-%body
-  = render "header"
-  .Main
-    .Mainvisual
-      .Mainvisual__info
-        .Mainvisual__info__title
-          人生を変えるフリマアプリ
-        .Mainvisual__info__explain
-          FURIMAはだれでもかんたんに出品・購入できる 
-          %br/
-          フリマアプリです
-        .Mainvisual__info__button
-          =link_to image_tag('material/logo/app-store.svg', class: "appstore"), "#"
-          =link_to image_tag('material/logo/google-play.svg', class: "googleplay"), root_path
-    .TopIntroduction
-      %h2.TopIntroduction__reason
-        FURIMAが選ばれる3つの理由
-      %ul.ReasonLists
-        %li.ReasonList
-          .ReasonImage
-            %span.Number
-              1
-            = image_tag 'material/pict/pict-reason-01.jpg'
-          %h3.ReasonText
-            %span 3分 
-            ですぐに出品
-          %p.ReasonTextExplain
-            スマホで入力するだけで簡単に出品できる！
-        %li.ReasonList
-          .ReasonImage
-            %span.Number
-              2
-            = image_tag 'material/pict/pict-reason-02.jpg'
-          %h3.ReasonText
-            %span シンプル 
-            で使いやすい
-          %p.ReasonTextExplain
-            めんどくさい入力は必要なく、検索も購入もスムーズ！
-        %li.ReasonList
-          .ReasonImage
-            %span.Number
-              3
-            = image_tag 'material/pict/pict-reason-03.jpg'
-          %h3.ReasonText 
-            手数料
-            %span 業界最安
-          %p.ReasonTextExplain
-            最大3%でお得に出品&購入！
-    .topMiddleDl
-      .topMiddleDl__inner
-        %h2.subtitle
-          会員数日本一位
-        %p.text
-          FURIMAは、フリマアプリで最も人気。
-          %br
-          出品・購入回数も業界最多です！
-          %br
-          ほしかったあの商品に出会えるかもしれません。
-        .btn
-          = image_tag "material/logo/app-store.svg"
-          = image_tag "material/logo/google-play.svg"
-    .topKeyFeatures
-      %h2.head FURIMAの特徴
-      .items
-        %section.item
-          %figure.item__img
-            = image_tag 'material/icon/icon-01.png', class: "img"
-          %h3.item__subtitle 簡単に売り買いできる
-          %p.item__detail スマホひとつで、いつでもどこでも簡単に出品・購入が可能！
-        %section.item
-          %figure.item__img
-            = image_tag 'material/icon/icon-03.png', class: "img"
-          %h3.item__subtitle 売上金は即日振込みに対応
-          %p.item__detail 午前9時までに振込を依頼いただければ、翌日に指定の口座に入金いたします!
-        %section.item
-          %figure.item__img
-            = image_tag 'material/icon/icon-04.png', class: "img"
-          %h3.item__subtitle 様々な支払いに対応
-          %p.item__detail お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
-    %section.PicupContainer
-      %h2.PicupContainer__head ピックアップカテゴリー
-      .PicupContainer__productBox
-        .ProductHead
+= render "header"
+.Main
+  .Mainvisual
+    .Mainvisual__info
+      .Mainvisual__info__title
+        人生を変えるフリマアプリ
+      .Mainvisual__info__explain
+        FURIMAはだれでもかんたんに出品・購入できる 
+        %br/
+        フリマアプリです
+      .Mainvisual__info__button
+        =link_to image_tag('material/logo/app-store.svg', class: "appstore"), "#"
+        =link_to image_tag('material/logo/google-play.svg', class: "googleplay"), root_path
+  .TopIntroduction
+    %h2.TopIntroduction__reason
+      FURIMAが選ばれる3つの理由
+    %ul.ReasonLists
+      %li.ReasonList
+        .ReasonImage
+          %span.Number
+            1
+          = image_tag 'material/pict/pict-reason-01.jpg'
+        %h3.ReasonText
+          %span 3分 
+          ですぐに出品
+        %p.ReasonTextExplain
+          スマホで入力するだけで簡単に出品できる！
+      %li.ReasonList
+        .ReasonImage
+          %span.Number
+            2
+          = image_tag 'material/pict/pict-reason-02.jpg'
+        %h3.ReasonText
+          %span シンプル 
+          で使いやすい
+        %p.ReasonTextExplain
+          めんどくさい入力は必要なく、検索も購入もスムーズ！
+      %li.ReasonList
+        .ReasonImage
+          %span.Number
+            3
+          = image_tag 'material/pict/pict-reason-03.jpg'
+        %h3.ReasonText 
+          手数料
+          %span 業界最安
+        %p.ReasonTextExplain
+          最大3%でお得に出品&購入！
+  .topMiddleDl
+    .topMiddleDl__inner
+      %h2.subtitle
+        会員数日本一位
+      %p.text
+        FURIMAは、フリマアプリで最も人気。
+        %br
+        出品・購入回数も業界最多です！
+        %br
+        ほしかったあの商品に出会えるかもしれません。
+      .btn
+        = image_tag "material/logo/app-store.svg"
+        = image_tag "material/logo/google-play.svg"
+  .topKeyFeatures
+    %h2.head FURIMAの特徴
+    .items
+      %section.item
+        %figure.item__img
+          = image_tag 'material/icon/icon-01.png', class: "img"
+        %h3.item__subtitle 簡単に売り買いできる
+        %p.item__detail スマホひとつで、いつでもどこでも簡単に出品・購入が可能！
+      %section.item
+        %figure.item__img
+          = image_tag 'material/icon/icon-03.png', class: "img"
+        %h3.item__subtitle 売上金は即日振込みに対応
+        %p.item__detail 午前9時までに振込を依頼いただければ、翌日に指定の口座に入金いたします!
+      %section.item
+        %figure.item__img
+          = image_tag 'material/icon/icon-04.png', class: "img"
+        %h3.item__subtitle 様々な支払いに対応
+        %p.item__detail お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
+  %section.PicupContainer
+    %h2.PicupContainer__head ピックアップカテゴリー
+    .PicupContainer__productBox
+      .ProductHead
+        = link_to "#" do
+          %h3.ProductHead__title 新規投稿商品
+      .ProductLists
+        .ProductList
           = link_to "#" do
-            %h3.ProductHead__title 新規投稿商品
-        .ProductLists
-          .ProductList
-            = link_to "#" do
-              %figure.ProductList__img
-                = image_tag "material/pict/pict-reason-01.jpg"
-              .ProductList__body
-                %h3.Name ee
-                .Details
-                  %ul
-                    %li 1000円
-                    %li
-                      = icon('fa', 'star')
-                      0
-                  %p (税込)
-          .ProductList
-            = link_to "#" do
-              %figure.ProductList__img
-                = image_tag "material/pict/pict-reason-01.jpg"
-              .ProductList__body
-                %h3.Name ee
-                .Details
-                  %ul
-                    %li 1000円
-                    %li
-                      = icon('fa', 'star')
-                      0
-                  %p (税込)
-          .ProductList
-            = link_to "#" do
-              %figure.ProductList__img
-                = image_tag "material/pict/pict-reason-01.jpg"
-              .ProductList__body
-                %h3.Name ee
-                .Details
-                  %ul
-                    %li 1000円
-                    %li
-                      = icon('fa', 'star')
-                      0
-                  %p (税込)
-          .ProductList
-            = link_to "#" do
-              %figure.ProductList__img
-                = image_tag "material/pict/pict-reason-01.jpg"
-              .ProductList__body
-                %h3.Name ee
-                .Details
-                  %ul
-                    %li 1000円
-                    %li
-                      = icon('fa', 'star')
-                      0
-                  %p (税込)
-    %section.PicupContainer
-      %h2.PicupContainer__head ピックアップブランド
-      .PicupContainer__productBox
-        .ProductHead
+            %figure.ProductList__img
+              = image_tag "material/pict/pict-reason-01.jpg"
+            .ProductList__body
+              %h3.Name ee
+              .Details
+                %ul
+                  %li 1000円
+                  %li
+                    = icon('fa', 'star')
+                    0
+                %p (税込)
+        .ProductList
           = link_to "#" do
-            %h3.ProductHead__title アーカイバ
-        .ProductLists
-          .ProductList
-            = link_to "#" do
-              %figure.ProductList__img
-                = image_tag "material/pict/pict-reason-01.jpg"
-              .ProductList__body
-                %h3.Name ee
-                .Details
-                  %ul
-                    %li 1000円
-                    %li
-                      = icon('fa', 'star')
-                      0
-                  %p (税込)
-          .ProductList
-            = link_to "#" do
-              %figure.ProductList__img
-                = image_tag "material/pict/pict-reason-01.jpg"
-              .ProductList__body
-                %h3.Name ee
-                .Details
-                  %ul
-                    %li 1000円
-                    %li
-                      = icon('fa', 'star')
-                      0
-                  %p (税込)
-          .ProductList
-            = link_to "#" do
-              %figure.ProductList__img
-                = image_tag "material/pict/pict-reason-01.jpg"
-              .ProductList__body
-                %h3.Name ee
-                .Details
-                  %ul
-                    %li 1000円
-                    %li
-                      = icon('fa', 'star')
-                      0
-                  %p (税込)
-          .ProductList
-            = link_to "#" do
-              %figure.ProductList__img
-                = image_tag "material/pict/pict-reason-01.jpg"
-              .ProductList__body
-                %h3.Name ee
-                .Details
-                  %ul
-                    %li 1000円
-                    %li
-                      = icon('fa', 'star')
-                      0
-                  %p (税込)
-    = render "app_banner"
-    = render "purchase_btn"
-  = render "footer"
+            %figure.ProductList__img
+              = image_tag "material/pict/pict-reason-01.jpg"
+            .ProductList__body
+              %h3.Name ee
+              .Details
+                %ul
+                  %li 1000円
+                  %li
+                    = icon('fa', 'star')
+                    0
+                %p (税込)
+        .ProductList
+          = link_to "#" do
+            %figure.ProductList__img
+              = image_tag "material/pict/pict-reason-01.jpg"
+            .ProductList__body
+              %h3.Name ee
+              .Details
+                %ul
+                  %li 1000円
+                  %li
+                    = icon('fa', 'star')
+                    0
+                %p (税込)
+        .ProductList
+          = link_to "#" do
+            %figure.ProductList__img
+              = image_tag "material/pict/pict-reason-01.jpg"
+            .ProductList__body
+              %h3.Name ee
+              .Details
+                %ul
+                  %li 1000円
+                  %li
+                    = icon('fa', 'star')
+                    0
+                %p (税込)
+  %section.PicupContainer
+    %h2.PicupContainer__head ピックアップブランド
+    .PicupContainer__productBox
+      .ProductHead
+        = link_to "#" do
+          %h3.ProductHead__title アーカイバ
+      .ProductLists
+        .ProductList
+          = link_to "#" do
+            %figure.ProductList__img
+              = image_tag "material/pict/pict-reason-01.jpg"
+            .ProductList__body
+              %h3.Name ee
+              .Details
+                %ul
+                  %li 1000円
+                  %li
+                    = icon('fa', 'star')
+                    0
+                %p (税込)
+        .ProductList
+          = link_to "#" do
+            %figure.ProductList__img
+              = image_tag "material/pict/pict-reason-01.jpg"
+            .ProductList__body
+              %h3.Name ee
+              .Details
+                %ul
+                  %li 1000円
+                  %li
+                    = icon('fa', 'star')
+                    0
+                %p (税込)
+        .ProductList
+          = link_to "#" do
+            %figure.ProductList__img
+              = image_tag "material/pict/pict-reason-01.jpg"
+            .ProductList__body
+              %h3.Name ee
+              .Details
+                %ul
+                  %li 1000円
+                  %li
+                    = icon('fa', 'star')
+                    0
+                %p (税込)
+        .ProductList
+          = link_to "#" do
+            %figure.ProductList__img
+              = image_tag "material/pict/pict-reason-01.jpg"
+            .ProductList__body
+              %h3.Name ee
+              .Details
+                %ul
+                  %li 1000円
+                  %li
+                    = icon('fa', 'star')
+                    0
+                %p (税込)
+  = render "app_banner"
+  = render "purchase_btn"
+= render "footer"
