@@ -24,6 +24,16 @@
         display: inline-block;
       }
 
+      &__optional{
+        background: #CCCCCC;
+        margin: 0 0 0 8px;
+        padding: 2px 4px;
+        border-radius: 2px;
+        color: #fff;
+        font-size: 12px;
+        display: inline-block;
+      }
+
       &__input{
         width: 100%;
         margin: 8px 0 0;
@@ -43,7 +53,7 @@
         touch-action: manipulation;
       }
 
-      select{
+      .birthday{
         width: 76px;
         height: 48px;
         font-size: 100%;
@@ -66,8 +76,8 @@
 
       .btn-blue{
         margin-bottom: 24px;
-        background: #27f0f7;
-        border: 1px solid #27f0f7;
+        background: #3ccace;
+        border: 1px solid #3ccace;
         color: #fff;
       }
     }

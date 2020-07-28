@@ -1,23 +1,41 @@
-= form_for(@address, url: addresses_path, method: :post) do |f|
-  .field
-    = f.label :郵便番号
-    %br/
-  = f.text_field :postal_code, placeholder: '例）000-0000'
-  .field
-    = f.label :都道府県
-    %br/
-  = f.collection_select :prefecture, JpPrefecture::Prefecture.all, :code, :name
-  .field
-    = f.label :市町村
-    %br/
-  = f.text_field :city, placeholder: '例）〇〇市'
-  .field
-    = f.label :番地
-    %br/
-  = f.text_field :address, placeholder: '例）〇〇1-1-1'
-  .field
-    = f.label :建物名
-    %br/
-  = f.text_field :apartment, placeholder: '例）フリマビル703'
-  .action
-  = f.submit "登録する"
+= render "contents/header"
+
+.Main
+  .Single_container
+    %h2.Single_head 新規会員情報入力
+    .Register_form
+      = form_for(@address, url: addresses_path, method: :post) do |f|
+        .field
+          = f.label :郵便番号
+          %span.field__require
+            必須
+          %br/
+          = f.text_field :postal_code, placeholder: '例）000-0000', class:"field__input"
+        .field
+          = f.label :都道府県
+          %span.field__require
+            必須
+          %br/
+          = f.collection_select :prefecture, JpPrefecture::Prefecture.all, :code, :name, {}, {class:"field__input"}
+        .field
+          = f.label :市町村
+          %span.field__require
+            必須
+          %br/
+          = f.text_field :city, placeholder: '例）〇〇市', class:"field__input"
+        .field
+          = f.label :番地
+          %span.field__require
+            必須
+          %br/
+          = f.text_field :address, placeholder: '例）〇〇1-1-1', class:"field__input"
+        .field
+          = f.label :建物名
+          %span.field__optional
+            任意
+          %br/
+          = f.text_field :apartment, placeholder: '例）フリマビル703', class:"field__input"
+        .field
+          = f.submit "登録する", class:"btn-default btn-blue"
+
+  = render "contents/footer"
