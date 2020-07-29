@@ -20,12 +20,10 @@ class ContentsController < ApplicationController
   end
 
   def create
-   binding.pry
     @content = Content.new(content_params)
     @content.images.present?
     @content.save!
-    redirect_to root_path
-    
+    redirect_to root_path 
   end
 
   def get_category_children
