@@ -123,6 +123,8 @@
             text-align: center;
           }
         }
+          
+        
         .ExplanationCounter {
           margin-top: 16px;
           color: #888;
@@ -196,4 +198,39 @@
       height: 80px;
     }
   }
+}
+
+label.upload-label{
+  height: 150px;
+  margin-top: 24px;
+  background-color: rgb(245, 245, 245);
+  border: 1px dashed rgb(204, 204, 204);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .upload-label__text{
+    .input-area{
+      display: none;
+    }
+  }
+}
+#previews {
+  display: flex;
+  .input{
+    .upload-label{
+      
+    }
+  }
+img.preview{
+  margin-top: 24px;
+  width: 114px;
+  height: 116px;
+}
+}
+.image-preview_btn_delete{
+  color: blue;
+  background-color: rgb(245, 245, 245);
+  border: 1px solid blue;
+  text-align: center;
 }

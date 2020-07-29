@@ -75,3 +75,4 @@ gem 'payjp'
 gem 'ancestry'
 gem "font-awesome-sass"
 gem "jp_prefecture"
+gem 'jquery-rails'
