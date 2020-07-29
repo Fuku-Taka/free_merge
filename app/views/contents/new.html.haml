@@ -4,146 +4,157 @@
       = link_to root_path do
         = image_tag "material/logo/logo.png", class: "TopIcon"
     .ContentsNew__middleWrapper
-      .ExhibitionForm
-        .ExhibitionForm__normal
-          .ExhibitionForm__body
-            .PhotosTop
-              .PhotosTop__text
-                %label
-                  出品画像
-                %span.Required
-                  必須
-            .PhotosMiddle
-              %p.PhotosMiddle__text
-                最大3枚までアップロードできます
-            .PhotosBottom
-              = icon("fas", "camera")
-              %p
-                ドラッグアンドドロップ
-                %br/
-                またはクリックしてファイルをアップロード
-            .Error
-        %hr/
-        .ExhibitionForm__normal
-          .ExhibitionForm__body
-            .TitleTop
-              .TitleTop__text
-                %label
-                  商品名
-                %span.Required
-                  必須
-            .TitleBottom
-              %input.FormBox{placeholder: "40文字まで"}
-            .Error
-          .ExhibitionForm__body.NotFirstChild
-            .ExplanationTop
-              .ExplanationTop__text
-                %label
-                  商品の説明
-                %span.Required
-                  必須
-            .ExplanationBottom
-              %textarea.TextArea{placeholder: explanation_placeholder}
-            .ExplanationCounter
-              0/1000
-            .Error
-        %hr/
-        .ExhibitionForm__normal
-          %p.FormTitle
-            商品の詳細
-          .ExhibitionForm__body.NotFirstChild
-            .CategoryTop
-              .CategoryTop__text
-                %label
-                  カテゴリー
-                %span.Required
-                  必須
-            .CategoryBottom
-              .FormBox
-                選択してください
-            .Error
-          .ExhibitionForm__body.NotFirstChild
-            .CategoryTop
-              .CategoryTop__text
-                %label
-                  ブランド
-                %span.Any
-                  任意
-            .CategoryBottom
-              %input.FormBox{placeholder: "例）ジャーマン"}
-          .ExhibitionForm__body.NotFirstChild
-            .CategoryTop
-              .CategoryTop__text
-                %label
-                  商品の状態
-                %span.Required
-                  必須
-            .CategoryBottom
-              .FormBox
-                選択してください
-            .Error
-        %hr/
-        .ExhibitionForm__normal
-          %p.FormTitle
-            配送について
-          .ExhibitionForm__body.NotFirstChild
-            .PostageTop
-              .PostageTop__text
-                %label
-                  発送料の負担
-                %span.Required
-                  必須
-            .PostageBottom
-              .FormBox
-                選択してください
-            .Error
-          .ExhibitionForm__body.NotFirstChild
-            .ShippingAreaTop
-              .ShippingAreaTop__text
-                %label
-                  発送元の地域
-                %span.Required
-                  必須
-            .ShippingAreaBottom
-              .FormBox
-                選択してください
-            .Error
-          .ExhibitionForm__body.NotFirstChild
-            .DaysUntilShippingTop
-              .DaysUntilShippingTop__text
-                %label
-                  発送までの日数
-                %span.Required
-                  必須
-            .DaysUntilShippingBottom
-              .FormBox
-                選択してください
-            .Error
-        %hr/
-        .ExhibitionForm__normal
-          %p.FormTitle
-            価格（¥300〜9,999,999）
-          .ExhibitionForm__body.PriceChild
-            .PriceBody
-              .PriceLeft
-                .PriceTop__text
+      = form_for(@content) do |f|
+        .ExhibitionForm
+          .ExhibitionForm__normal
+            .ExhibitionForm__body
+              .PhotosTop
+                .PhotosTop__text
                   %label
-                    販売価格
+                    出品画像
                   %span.Required
                     必須
-              .PriceRight
-                %h3
-                  ¥
-                %input.FormBox{placeholder: "0"}
-            .Error
-        .ExhibitionForm__exhibition
-          .ExhibitionBtn
-            出品する
-          .Return
-            もどる
-        .ExhibitionForm__precautions
-          %p.PrecautionsText
-            禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。
+                .PhotosMiddle
+                  %p.PhotosMiddle__text
+                    最大5枚までアップロードできます
+                = f.fields_for :images do |image|
+                  .clearfix
+                    // 写真のプレビューとインプットボタンのul
+                    %ul#previews
+                      %li.input
+                        // 画像を取り込むインプットボタン
+                        %label.upload-label
+                          .upload-label__text
+                            ドラッグアンドドロップ
+                            %br
+                            またはクリックしてファイルをアップロード
+                            .input-area
+                              = image.file_field :content_image, class: "hidden image_upload", multiple: true
+          .ExhibitionForm__normal
+            .ExhibitionForm__body
+              .TitleTop
+                .TitleTop__text
+                  %label
+                    商品名
+                  %span.Required
+                    必須
+                .TitleBottom
+                  = f.text_field :name, class: 'FormBox', placeholder: '40字まで'
+              .Error
+            .ExhibitionForm__body.NotFirstChild
+              .ExplanationTop
+                .ExplanationTop__text
+                  %label
+                    商品の説明
+                  %span.Required
+                    必須
+                .ExplanationBottom
+                  =f.text_area :explain,class:"TextArea",placeholder: explanation_placeholder
+              .ExplanationCounter
+                0/1000
+              .Error
+          %hr/
+          .ExhibitionForm__normal
+            %p.FormTitle
+              商品の詳細
+            .ExhibitionForm__body.NotFirstChild
+              .CategoryTop
+                .CategoryTop__text
+                  %label
+                    カテゴリー
+                  %span.Required
+                    必須
+              .CategoryBottom{id: "category__box--parent"}
+                = f.collection_select :category_id, @category_parent_array, :id, :name,{prompt:"選択して下さい"},{class:"FormBox"}
+              .Error
+            .ExhibitionForm__body.NotFirstChild#SizeBox
+              .CategoryTop
+                .CategoryTop__text
+                  %label
+                    サイズ
+                  %span.Required
+                    必須
+              .CategoryBottom
+                = f.select :size, Content.sizes.keys,{prompt:"選択して下さい"},{class:"FormBox"}
+              .Error
+            %hr/
+            .ExhibitionForm__body.NotFirstChild
+              .CategoryTop
+                .CategoryTop__text
+                  %label
+                    ブランド
+                  %span.Any
+                    任意
+              .CategoryBottom
+                = f.text_field :brand, class: 'FormBox', placeholder: '例）ジャーマン'
+            .ExhibitionForm__body.NotFirstChild
+              .CategoryTop
+                .CategoryTop__text
+                  %label
+                    商品の状態
+                  %span.Required
+                    必須
+              .CategoryBottom
+                = f.select :status, Content.statuses.keys,{prompt:"選択して下さい"},{class:"FormBox"}
+              .Error
+          %hr/
+          .ExhibitionForm__normal
+            %p.FormTitle
+              配送について
+            .ExhibitionForm__body.NotFirstChild
+              .PostageTop
+                .PostageTop__text
+                  %label
+                    発送料の負担
+                  %span.Required
+                    必須
+              .PostageBottom
+                = f.select :postage, Content.postages.keys,{prompt:"選択して下さい"},{class:"FormBox"}
+              .Error
+            .ExhibitionForm__body.NotFirstChild
+              .ShippingAreaTop
+                .ShippingAreaTop__text
+                  %label
+                    発送元の地域
+                  %span.Required
+                    必須
+              .ShippingAreaBottom
+                = f.select :prefecture, Content.prefectures.keys,{prompt:"選択して下さい"},{class:"FormBox"}
+              .Error
+            .ExhibitionForm__body.NotFirstChild
+              .DaysUntilShippingTop
+                .DaysUntilShippingTop__text
+                  %label
+                    発送までの日数
+                  %span.Required
+                    必須
+              .DaysUntilShippingBottom
+                = f.select :shipment, Content.shipments.keys,{prompt:"選択して下さい"},{class:"FormBox"}
+              .Error
+          %hr/
+          .ExhibitionForm__normal
+            %p.FormTitle
+              価格（¥300〜9,999,999）
+            .ExhibitionForm__body.PriceChild
+              .PriceBody
+                .PriceLeft
+                  .PriceTop__text
+                    %label
+                      販売価格
+                    %span.Required
+                      必須
+                .PriceRight
+                  %h3
+                    ¥
+                  = f.text_field :price, class: 'FormBox', placeholder: '0'
+              .Error
+          .ExhibitionForm__exhibition
+            = f.submit "出品する", class: "ExhibitionBtn"
+            .Return
+              もどる
+          .ExhibitionForm__precautions
+            %p.PrecautionsText
+              禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。
     .ContentsNew__bottomWrapper
       = link_to root_path do
         = image_tag "material/logo/logo-white.png", class: "BottomIcon"
