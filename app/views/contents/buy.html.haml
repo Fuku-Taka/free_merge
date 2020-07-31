@@ -1,0 +1,75 @@
+.Main
+  .ContentsNew
+    .ContentsNew__topWrapper
+      = link_to root_path do
+        = image_tag "material/logo/logo.png", class: "TopIcon"
+    .ContentsNew__middleWrapper
+      .ExhibitionForm
+        .ExhibitionForm__normal
+          .ExhibitionForm__body
+            %h2.BuyInfo
+              購入内容の確認
+            .Error
+        %hr/
+    .ContentsNew__middleWrapper
+      .ExhibitionForm
+        .ExhibitionForm__normal
+          .ExhibitionForm__body
+            .ContentInfo
+              .ContentImage
+                =image_tag("material/pict/pict-reason-01.jpg", class: "BuyContent", heigt: "100px", width: "100px")   
+              .ContentName
+                ジャーマン
+              .Content__cost
+                送料込み(税込)
+                %span¥1,900
+            .Error
+        %hr/
+    .ContentsNew__middleWrapper
+      .ExhibitionForm
+        .ExhibitionForm__normal
+          .ExhibitionForm__body
+            .PriceInfo
+              .PriceInfo__name
+                支払い金額
+              .PriceInfo__cost
+                ¥1,900
+            .Error
+        %hr/
+    .ContentsNew__middleWrapper
+      .ExhibitionForm
+        .ExhibitionForm__normal
+          .ExhibitionForm__body
+            .Payment
+              .Payment__method
+                支払い方法
+              .Payment__registration
+                = link_to "#", class: "PaymentRegistration" do
+                  =icon("fas", "plus-circle") 
+                  登録してください
+            .Error
+        %hr/
+    .ContentsNew__middleWrapper
+      .ExhibitionForm
+        .ExhibitionForm__normal
+          .ExhibitionForm__body
+            .Delivery
+              .Delivery__method
+                配送先
+              .Delivery__registration
+                = link_to "#", class: "DeliveryRegistration" do
+                  =icon("fas", "plus-circle") 
+                  登録してください
+            .Error
+        %hr/
+    .ContentsNew__middleWrapper
+      .ExhibitionForm
+        .ExhibitionForm__normal
+          .ExhibitionForm__body
+            .BuyBtn
+              %button{type: "button", class:'BuyButton'}
+                購入する
+
+    .ContentsNew__bottomWrapper
+      = link_to root_path do
+        = image_tag "material/logo/logo-white.png", class: "BottomIcon"
