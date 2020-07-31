@@ -1,11 +1,10 @@
 class ContentsController < ApplicationController
+  before_action :set_content, only: [:show, :destroy]
 
   def index
   end
 
   def show
-    @content = Content.find(params[:id])
-    # ↑↑↑showアクションで使うインスタンス変数を作っときます。
   end
   
 
@@ -27,9 +26,11 @@ class ContentsController < ApplicationController
   end
 
   def destroy
-    @content = Content.find(params[:id])
-    @content.destroy
-    redirect_to("/")
+    if @content.destroy
+      redirect_to root_path, notice: '削除しました'
+    else
+      render :show
+    end
   end
 
   def get_category_children
@@ -44,6 +45,10 @@ class ContentsController < ApplicationController
 
   def content_params
     params.require(:content).permit(:name, :category_id, :price, :explain, :size, :brand, :status, :postage, :shipment, :prefecture, images_attributes: [:content_image] ).merge(user_id: current_user.id)
+  end
+
+  def set_content
+    @content = Content.find(params[:id])
   end
 
 end
