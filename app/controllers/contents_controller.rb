@@ -4,7 +4,7 @@ class ContentsController < ApplicationController
   end
 
   def show
-    # @content = Content.find(params[:id])
+    @content = Content.find(params[:id])
     # ↑↑↑showアクションで使うインスタンス変数を作っときます。
   end
   
@@ -24,6 +24,12 @@ class ContentsController < ApplicationController
     @content.images.present?
     @content.save!
     redirect_to root_path 
+  end
+
+  def destroy
+    @content = Content.find(params[:id])
+    @content.destroy
+    redirect_to("/")
   end
 
   def get_category_children
