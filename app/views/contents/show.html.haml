@@ -68,6 +68,9 @@
               %li
               = link_to "#", class: "report" do
                 不適切な商品の通報
+          .ItemBox__delete
+            - if user_signed_in? && current_user.id == @content.user_id
+              = link_to "削除する", content_path(@content.id), method: :delete, class:"deleteBtn"
         .CommentBox
           = form_with(id: "new_comment") do |f|
             = f.text_area :content, class: 'commentbody'
