@@ -1,0 +1,92 @@
+.BuyInfo{
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.ContentInfo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  .ContentImage{
+    margin-right: 20px;
+    .BuyContent{
+      border-radius: 5px;
+    }
+    
+  }
+  .ContentName{
+    margin-bottom: 80px;
+    
+    
+  }
+  .Content__cost{
+    margin-left: 100px;
+    span{
+      font-weight: 600;
+    }
+  }
+}
+
+.PriceInfo{
+  display: flex;
+  justify-content: space-around;
+  font-weight: 600;
+  &__name{
+    font-size: 18px;
+  }
+  &__cost{
+    font-size: 24px;
+  }
+}
+
+.Payment{
+  font-size: 14px;
+  &__method{
+    font-weight: 600;
+    .PaymentRegistration{
+      text-decoration: none;
+      color: #0095ee;
+    }
+  }
+}
+
+.Payment{
+  font-size: 14px;
+  &__method{
+    font-weight: 600;
+  }
+  &__registration{
+    .PaymentRegistration{
+      text-decoration: none;
+      color: #0095ee;
+    }
+  }
+}
+
+.Delivery{
+  font-size: 14px;
+  &__method{
+    font-weight: 600;
+  }
+  &__registration{
+    .DeliveryRegistration{
+      text-decoration: none;
+      color: #0095ee;
+    }
+  }
+}
+
+.BuyBtn{
+  text-align: center;
+  .BuyButton{
+    background: #3ccace;
+    border: 1px solid #3ccace;
+    border-radius: 4px;
+    width: 300px;
+    height: 50px;
+    color: #fff;
+    font-size: 18px;
+  }
+}
