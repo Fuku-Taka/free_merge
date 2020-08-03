@@ -9,7 +9,12 @@ Rails.application.routes.draw do
 
   root 'contents#index'
   
-  resources :users, only: [:show, :edit, :update]
+  resources :users, only: [:show, :edit, :update] do
+    member do
+      get 'logout'
+      get 'card'
+    end
+  end
 
   resources :contents do
     collection do

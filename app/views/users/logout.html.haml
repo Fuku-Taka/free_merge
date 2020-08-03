@@ -1,0 +1,13 @@
+= render partial: "contents/header"
+.Main
+  .mypage_a  
+    %main.mypage-contents.clearfix
+      .main-content
+        .Contentt
+          .Contentt__form
+            = link_to  destroy_user_session_path, class: "destroy", method: :delete do
+              ログアウト
+      = render "show_side"
+  = render partial: "contents/app_banner"
+  = render partial: "contents/purchase_btn"
+= render partial: "contents/footer"

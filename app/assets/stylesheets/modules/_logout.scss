@@ -1,0 +1,22 @@
+.Contentt{
+  width: 700px;
+  height: 179px;
+  background-color: #ffffff;
+  margin-top: 20px;
+  &__form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .destroy{
+      text-decoration: none;
+      background-color: red;
+      color: white;
+      width: 320px;
+      height: 50px;
+      text-align: center;
+      line-height: 3;
+      margin-top: 65px;
+      border-radius: 100px;
+    } 
+  }
+}
