@@ -1,0 +1,41 @@
+= render partial: "contents/header"
+.Main
+  .mypage_a  
+    %main.mypage-contents.clearfix
+      .main-content
+        %section.user
+          .user-link
+            %figure
+              .user-link__iconn
+                = image_tag "material/icon/member_photo_noimage_thumb.png", class:"user-link__icon"
+            %h2.user-link__name
+          
+            .user-link__number
+              評価  0  出品数  0
+        %section.transaction-hisory
+          %ul.transaction-tabs
+            %li.select
+              やることリスト
+            %li
+              お知らせ
+          .tab-content-transaction
+            %ul.tab-content-transaction__now
+              %li.tab-content-transaction__notfound 現在、やることリストはありません
+
+
+        %section.transaction-hisory
+          %h2.header 購入した商品
+          %ul.transaction-tabs
+            %li.select
+              取引中
+            %li
+              過去の取引
+          .tab-content-transaction
+            %ul.tab-content-transaction__now
+              %li.tab-content-transaction__notfound 取引中の商品がありません
+      = render "show_side"
+
+
+  = render partial: "contents/app_banner"
+  = render partial: "contents/purchase_btn"
+= render partial: "contents/footer"
