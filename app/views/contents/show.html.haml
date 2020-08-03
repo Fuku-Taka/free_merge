@@ -6,59 +6,61 @@
       .TopContent
         .ItemBox
           %h2.ItemBox__name
-            ee
+            = @content.name
           .ItemBox__body
             %ul
               %li
-                =image_tag("material/pict/pict-reason-01.jpg", class: "imgmain")
+                =image_tag(@content.images[0].content_image.url)
                 %ul
                   %li
-                    = image_tag("material/pict/pict-reason-01.jpg", class: "img")
+                  -if @content.images[1].present?
+                    =image_tag(@content.images[1].content_image.url)
+                  - else
                   %li
-                    = image_tag("material/pict/pict-reason-01.jpg", class: "img") 
+                  -if @content.images[2].present?
+                    =image_tag(@content.images[2].content_image.url)
+                  - else
+                  %li
+                  -if @content.images[3].present?
+                    =image_tag(@content.images[3].content_image.url)
+                  - else
+                  %li
+                  -if @content.images[4].present?
+                    =image_tag(@content.images[4].content_image.url)
+                  - else
           .ItemBox__price
-            %span ¥1000
+            %span= @content.price
           .ItemBox__priceDetail
             （税込）送料込み
           .ItemBox__detail
-            eee
+            = @content.explain
           .ItemBox__table
             %table
               %tr
                 %th 出品者
-                %td ss
+                %td= @content.user.nickname
+
               %tr
                 %th カテゴリー
-                %td 
-                  %br
-                  = link_to "#", class: "link" do
-                    ベビー・キッズ
-                  %br
-                  = link_to "#", class: "link" do
-                    ベビー服（男の子用）〜95cm
-                  %br
-                  = link_to "#", class: "link" do
-                    アウター
+                %td= @content.category.name
               %tr
                 %th ブランド
-                %td
+                %td= @content.brand
               %tr
                 %th 商品のサイズ
-                %td
+                %td= @content.size
               %tr
                 %th 商品の状態
-                %td 新品/未使用
+                %td= @content.status
               %tr
                 %th 配送料の負担
-                %td 送料込み（出品者負担）
+                %td= @content.postage
               %tr
                 %th 発送元の地域
-                %td 
-                  = link_to "#", class: "link" do
-                    北海道
+                %td= @content.prefecture
               %tr
                 %th 発送日の目安
-                %td 1~2日で発送
+                %td= @content.shipment
           .ItemBox__optionalArea
             %ul
               %li
@@ -68,6 +70,9 @@
               %li
               = link_to "#", class: "report" do
                 不適切な商品の通報
+          .ItemBox__buy
+            - if user_signed_in? && current_user.id != @content.user_id
+              = link_to "購入する", buy_content_path(@content.id), method: :get, class:"BuyConfirmationBtn"
           .ItemBox__delete
             - if user_signed_in? && current_user.id == @content.user_id
               = link_to "削除する", content_path(@content.id), method: :delete, class:"deleteBtn"

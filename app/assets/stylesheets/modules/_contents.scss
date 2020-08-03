@@ -533,6 +533,21 @@ body {
                 font-size: 14px;
               }
             }
+            &__buy{
+              text-align: center;
+              margin-bottom: 20px;
+              .BuyConfirmationBtn{
+                line-height: 30px;
+                background: #3CCACE;
+                border: 1px solid #3CCACE;
+                color: #fff;
+                font-size: 24px;
+                border-radius: 100px;
+                text-decoration: none;
+                padding: 10px 50px;
+                
+              }
+            }
             &__delete{
               text-align: center;
               .deleteBtn{
