@@ -10,26 +10,43 @@
           .ItemBox__body
             %ul
               %li
-                =image_tag(@content.images[0].content_image.url)
+                .ItemBox__body--main
+                  = image_tag(@content.images[0].content_image.url)
+                  - if @content.buyer_id?
+                    .SoldLabel
+                      SOLD
                 %ul
                   %li
-                  -if @content.images[1].present?
-                    =image_tag(@content.images[1].content_image.url)
-                  - else
+                    - if @content.images[1].present?
+                      .ItemBox__body--sub
+                        = image_tag(@content.images[1].content_image.url)
+                        - if @content.buyer_id?
+                          .SoldLabel
+                            SOLD
                   %li
-                  -if @content.images[2].present?
-                    =image_tag(@content.images[2].content_image.url)
-                  - else
+                    - if @content.images[2].present?
+                      .ItemBox__body--sub
+                        = image_tag(@content.images[2].content_image.url)
+                        - if @content.buyer_id?
+                          .SoldLabel
+                            SOLD
                   %li
-                  -if @content.images[3].present?
-                    =image_tag(@content.images[3].content_image.url)
-                  - else
+                    - if @content.images[3].present?
+                      .ItemBox__body--sub
+                        = image_tag(@content.images[3].content_image.url)
+                        - if @content.buyer_id?
+                          .SoldLabel
+                            SOLD
                   %li
-                  -if @content.images[4].present?
-                    =image_tag(@content.images[4].content_image.url)
-                  - else
+                    - if @content.images[4].present?
+                      .ItemBox__body--sub
+                        = image_tag(@content.images[4].content_image.url)
+                        - if @content.buyer_id?
+                          .SoldLabel
+                            SOLD
           .ItemBox__price
-            %span= @content.price
+            %span
+              = number_to_currency(@content.price, unit: "￥", precision: 0)
           .ItemBox__priceDetail
             （税込）送料込み
           .ItemBox__detail
@@ -70,12 +87,17 @@
               %li
               = link_to "#", class: "report" do
                 不適切な商品の通報
-          .ItemBox__buy
+          - if @content.buyer_id?
+            .ItemBox__soldout
+              .SoldOutBtn
+                売り切れ
+          - else
             - if user_signed_in? && current_user.id != @content.user_id
-              = link_to "購入する", buy_content_path(@content.id), method: :get, class:"BuyConfirmationBtn"
-          .ItemBox__delete
+              .ItemBox__buy
+                = link_to "購入する", buy_content_path(@content.id), method: :get, class:"BuyConfirmationBtn"
             - if user_signed_in? && current_user.id == @content.user_id
-              = link_to "削除する", content_path(@content.id), method: :delete, class:"deleteBtn"
+              .ItemBox__delete
+                = link_to "削除する", content_path(@content.id), method: :delete, class:"deleteBtn"
         .CommentBox
           = form_with(id: "new_comment") do |f|
             = f.text_area :content, class: 'commentbody'
