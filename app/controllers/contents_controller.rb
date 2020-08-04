@@ -23,8 +23,14 @@ class ContentsController < ApplicationController
   def create
     @content = Content.new(content_params)
     @content.images.present?
-    @content.save!
-    redirect_to root_path 
+    if @content.save
+      redirect_to root_path
+    else
+      @category_parent_array = Category.where(ancestry: nil)
+      @content = Content.new
+      @content.images.build
+      render :new
+    end
   end
 
   def destroy
