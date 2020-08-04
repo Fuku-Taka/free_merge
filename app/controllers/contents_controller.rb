@@ -2,6 +2,8 @@ class ContentsController < ApplicationController
   before_action :set_content, only: [:show, :destroy]
 
   def index
+    @contents_category = Content.where(category_id: 3).where("buyer_id is NULL").order("RAND()").limit(5).includes(:images)
+    @contents_brand = Content.where(brand: "ジャーマン").where("buyer_id is NULL").order("RAND()").limit(5).includes(:images)
   end
 
   def show
