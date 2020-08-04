@@ -78,3 +78,5 @@ gem "jp_prefecture"
 gem 'jquery-rails'
 
 gem 'fog-aws'
+
+gem 'payjp'

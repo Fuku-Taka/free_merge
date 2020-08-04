@@ -33,6 +33,17 @@ class ContentsController < ApplicationController
     end
   end
 
+  def pay
+    @content = Content.find(params[:id])
+    Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
+    charge = Payjp::Charge.create(
+    amount: @content.price,
+    card: params['payjp-token'],
+    currency: 'jpy'
+    )
+  end
+
+
   def get_category_children
     @category_children = Category.find("#{params[:parent_id]}").children
   end
