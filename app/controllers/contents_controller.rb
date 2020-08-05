@@ -33,9 +33,9 @@ class ContentsController < ApplicationController
     end
   end
 
-  def pay
+  def purchase
     @content = Content.find(params[:id])
-    Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
+    Payjp.api_key = "sk_test_34b9c40833f2c90f739205a4"
     charge = Payjp::Charge.create(
     amount: @content.price,
     card: params['payjp-token'],
