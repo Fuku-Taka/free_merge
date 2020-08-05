@@ -76,5 +76,6 @@ gem 'ancestry'
 gem "font-awesome-sass"
 gem "jp_prefecture"
 gem 'jquery-rails'
+gem 'rails-i18n'
 
 gem 'fog-aws'
