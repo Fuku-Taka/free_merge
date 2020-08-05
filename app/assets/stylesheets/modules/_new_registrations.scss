@@ -1,3 +1,38 @@
+.SettingAddressForm__errors {
+  text-align: center;
+  max-width: 343px;
+  margin: 0 auto;
+  border: solid 1px black;
+  border-radius: 6px;
+  h2 {
+    font-size: 16px;
+    background-color: red;
+    border-radius: 6px;
+    font-weight: bold;
+  }
+  li {
+    font-size: 12px;
+  }
+}
+
+#error_explanation {
+  text-align: center;
+  max-width: 500px;
+  margin: 0 auto;
+  border: solid 1px black;
+  border-radius: 6px;
+  h2 {
+    font-size: 16px;
+    background-color: red;
+    border-radius: 6px;
+    font-weight: bold;
+  }
+  li {
+    font-size: 12px;
+  }
+}
+
+
 .Single_container{
   max-width: 343px;
   margin: 0 auto;

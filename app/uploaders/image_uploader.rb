@@ -24,6 +24,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   # end
 
+  storage :file
   # Process files as they are uploaded:
   # process scale: [200, 300]
   #
@@ -47,4 +48,9 @@ class ImageUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
+  if Rails.env.production?
+    storage :fog
+  else
+    storage :file #=> ローカルストレージ
+  end
 end

@@ -4,8 +4,14 @@
       = link_to root_path do
         = image_tag "material/logo/logo.png", class: "TopIcon"
     .ContentsNew__middleWrapper
-      = form_for(@content) do |f|
+      = form_with model: @content, local: true do |f|
         .ExhibitionForm
+          - if @content.errors.any?
+            .ExhibitionForm__normal
+              .SettingContentForm__errors
+                %ul
+                  - @content.errors.full_messages.each do |message|
+                    %li= message
           .ExhibitionForm__normal
             .ExhibitionForm__body
               .PhotosTop
@@ -157,4 +163,4 @@
               禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。
     .ContentsNew__bottomWrapper
       = link_to root_path do
-        = image_tag "material/logo/logo-white.png", class: "BottomIcon"
+        = image_tag "material/logo/logo.png", class: "BottomIcon"

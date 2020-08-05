@@ -108,9 +108,24 @@ $(function(){
       //div（this）から要素を辿ればinputを指定することが可能。
   
       //$liに追加するためのプレビュー画面のHTML。横長でないとバグる
-      var preview = $('<div class="image-preview__wapper"><img class="preview"></div><div class="image-preview_btn"><div class="image-preview_btn_delete">削除</div></div>'); 
+      var preview = $(`<div class="image-preview__wapper">
+                        <img class="preview">
+                      </div>
+                      <div class="image-preview_btn">
+                        <div class="image-preview_btn_delete">
+                          削除
+                        </div>
+                      </div>`); 
       //次の画像を読み込むためのinput。 
-      var append_input = $(`<li class="input"><label class="upload-label"><div class="upload-label__text">ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード<div class="input-area"><input class="hidden image_upload" type="file"></div></div></label></li>`)
+      var append_input = $(`<li class="input">
+                             <label class="upload-label">
+                               <div class="upload-label__text">ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード
+                                 <div class="input-area">
+                                   <input class="hidden image_upload" type="file">
+                                 </div>
+                               </div>
+                             </label>
+                           </li>`)
       $ul = $('#previews')
       $li = $(this).parents('li');
       $label = $(this).parents('.upload-label');
@@ -177,7 +192,15 @@ $(function(){
   });
   
   $(document).on('click','.image-preview_btn_delete',function(){
-    var append_input = $(`<li class="input"><label class="upload-label"><div class="upload-label__text">ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード<div class="input-area"><input class="hidden image_upload" type="file"></div></div></label></li>`)
+    var append_input = $(`<li class="input">
+                           <label class="upload-label">
+                             <div class="upload-label__text">ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード
+                               <div class="input-area">
+                                 <input class="hidden image_upload" type="file">
+                               </div>
+                             </div>
+                           </label>
+                         </li>`)
     $ul = $('#previews')
     $lis = $ul.find('.image-preview');
     $input = $ul.find('.input');

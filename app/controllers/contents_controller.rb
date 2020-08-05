@@ -2,6 +2,8 @@ class ContentsController < ApplicationController
   before_action :set_content, only: [:show, :destroy]
 
   def index
+    @contents_category = Content.where(category_id: 3).where("buyer_id is NULL").order("RAND()").limit(5).includes(:images)
+    @contents_brand = Content.where(brand: "ジャーマン").where("buyer_id is NULL").order("RAND()").limit(5).includes(:images)
   end
 
   def show
@@ -21,8 +23,14 @@ class ContentsController < ApplicationController
   def create
     @content = Content.new(content_params)
     @content.images.present?
-    @content.save!
-    redirect_to root_path 
+    if @content.save
+      redirect_to root_path
+    else
+      @category_parent_array = Category.where(ancestry: nil)
+      @content = Content.new
+      @content.images.build
+      render :new
+    end
   end
 
   def destroy

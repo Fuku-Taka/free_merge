@@ -6,4 +6,6 @@ class User < ApplicationRecord
   belongs_to :creditcard
   has_one :address
   has_many :contents
+  validates :nickname, presence: true
+  # validates :address, presence: true
 end
