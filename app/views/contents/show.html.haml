@@ -46,7 +46,7 @@
                             SOLD
           .ItemBox__price
             %span
-              = number_to_currency(content.price, unit: "円", strip_insignificant_zeros: true)
+              = number_to_currency(@content.price, unit: "円", strip_insignificant_zeros: true)
           .ItemBox__priceDetail
             （税込）送料込み
           .ItemBox__detail
