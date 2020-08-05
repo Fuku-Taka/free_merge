@@ -47,37 +47,47 @@
           .ItemBox__price
             %span
               = number_to_currency(@content.price, unit: "円", strip_insignificant_zeros: true)
-          .ItemBox__priceDetail
-            （税込）送料込み
+            .ItemBox__priceDetail
+              - if @content.postage == "送料込み（出品者負担)"
+                %h3 （税込）送料込み
+              - elsif @content.postage == "着払い（購入者負担）"
+                %h3 （税込）着払い
           .ItemBox__detail
             = @content.explain
           .ItemBox__table
             %table
               %tr
                 %th 出品者
-                %td= @content.user.nickname
-
+                %td
+                  = @content.user.nickname
               %tr
                 %th カテゴリー
-                %td= @content.category.name
+                %td
+                  #{@content.category.parent.parent.name} / #{@content.category.parent.name} / #{@content.category.name}
               %tr
                 %th ブランド
-                %td= @content.brand
+                %td
+                  = @content.brand
               %tr
                 %th 商品のサイズ
-                %td= @content.size
+                %td
+                  = @content.size
               %tr
                 %th 商品の状態
-                %td= @content.status
+                %td
+                  = @content.status
               %tr
                 %th 配送料の負担
-                %td= @content.postage
+                %td
+                  = @content.postage
               %tr
                 %th 発送元の地域
-                %td= @content.prefecture
+                %td
+                  = @content.prefecture
               %tr
                 %th 発送日の目安
-                %td= @content.shipment
+                %td
+                  = @content.shipment
           .ItemBox__optionalArea
             %ul
               %li
@@ -114,20 +124,23 @@
           後ろの商品 >
       .RelatedItems
         = link_to '#',class: 'RelatedItems__body' do
-          ベビー・キッズをもっと見る
+          #{@content.category.parent.parent.name} / #{@content.category.parent.name} / #{@content.category.name} をもっと見る
         .ContentLists
-          .ContentList
-            = link_to '#' do
-              = image_tag 'https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png', alt: '', height: '150px', width: '100%', class: ''
-              .ContentList__body
-                %h3.name contents3
-                .Details
-                  %ul
-                    %li 50000円
-                    %li
-                      = icon('fa', 'star')
-                      0
-                  %p (税込)
+          - @contents_category.each do |content|
+            .ContentList
+              = link_to content_path(content) do
+                = image_tag content.images[0].content_image.url, height: '150px', width: '100%'
+                .ContentList__body
+                  %h3.name
+                    = content.name
+                  .Details
+                    %ul
+                      %li
+                        = number_to_currency(content.price, unit: "円", strip_insignificant_zeros: true)
+                      %li
+                        = icon('fa', 'star')
+                        0
+                    %p (税込)
   = render "app_banner"
   = render "purchase_btn"
 = render "footer"
