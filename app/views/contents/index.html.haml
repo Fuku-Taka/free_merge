@@ -94,7 +94,7 @@
                 .Details
                   %ul
                     %li
-                      = number_to_currency(content.price, unit: "￥", precision: 0)
+                      = number_to_currency(content.price, unit: "円", strip_insignificant_zeros: true)
                     %li
                       = icon('fa', 'star')
                       0
@@ -117,7 +117,7 @@
                 .Details
                   %ul
                     %li
-                      = number_to_currency(content.price, unit: "￥", precision: 0)
+                      = number_to_currency(content.price, unit: "円", strip_insignificant_zeros: true)
                     %li
                       = icon('fa', 'star')
                       0

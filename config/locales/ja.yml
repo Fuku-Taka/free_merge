@@ -1,6 +1,13 @@
 ---
 ja:
   activerecord:
+    attributes:
+      address:
+        postal_code: 郵便番号
+        city: 市町村
+        address: 番地
+    models:
+      address: アドレス
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

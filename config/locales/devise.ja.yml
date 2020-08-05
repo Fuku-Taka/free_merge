@@ -26,6 +26,11 @@ ja:
         unconfirmed_email: 未確認Eメール
         unlock_token: ロック解除用トークン
         updated_at: 更新日
+        family_name: 苗字
+        first_name: 名前
+        family_name_kana: 苗字のフリガナ
+        first_name_kana: 名前のフリガナ
+        birthday: 生年月日
     models:
       user: ユーザー
   devise:
