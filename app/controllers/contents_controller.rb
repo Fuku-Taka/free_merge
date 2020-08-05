@@ -26,6 +26,7 @@ class ContentsController < ApplicationController
     if @content.save
       redirect_to root_path
     else
+      flash.now[:alert] = '必須項目を入力してください'
       @category_parent_array = Category.where(ancestry: nil)
       @content = Content.new
       @content.images.build
