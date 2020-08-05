@@ -2,11 +2,17 @@ class ContentsController < ApplicationController
   before_action :set_content, only: [:show, :destroy]
 
   def index
-    @contents_category = Content.where(category_id: 3).where("buyer_id is NULL").order("RAND()").limit(5).includes(:images)
-    @contents_brand = Content.where(brand: "ジャーマン").where("buyer_id is NULL").order("RAND()").limit(5).includes(:images)
+    pickup_category_content = Content.order("RAND()").find_by(buyer_id: nil)
+    pickup_category_grandchild = Category.find(pickup_category_content.category_id)
+    pickup_category_child = Category.find(pickup_category_grandchild.parent_id)
+    @pickup_category = Category.find(pickup_category_child.ancestry)
+    @contents_category = Content.where(category_id: @pickup_category.indirect_ids).where(buyer_id: nil).order("RAND()").limit(5).includes(:images)
+    @pickup_brand_content = Content.order("RAND()").where.not(brand: "").find_by(buyer_id: nil)
+    @contents_brand = Content.where(brand: @pickup_brand_content.brand).where(buyer_id: nil).order("RAND()").limit(5).includes(:images)
   end
 
   def show
+    @contents_category = Content.where(category_id: @content.category_id).where(buyer_id: nil).order("RAND()").limit(3).includes(:images)
   end
   
 

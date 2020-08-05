@@ -81,7 +81,8 @@
     .PicupContainer__productBox
       .ProductHead
         = link_to "#" do
-          %h3.ProductHead__title 新規投稿商品
+          %h3.ProductHead__title
+            = @pickup_category.name
       .ProductLists
         - @contents_category.each do |content|
           .ProductList
@@ -104,7 +105,8 @@
     .PicupContainer__productBox
       .ProductHead
         = link_to "#" do
-          %h3.ProductHead__title アーカイバ
+          %h3.ProductHead__title
+            = @pickup_brand_content.brand
       .ProductLists
         - @contents_brand.each do |content|
           .ProductList
