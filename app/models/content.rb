@@ -20,7 +20,7 @@ class Content < ApplicationRecord
 
   validates :name, :explain, presence: true
   validates :price,presence: true,numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999}
-  validates :category_id, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 1000}
+  validates :category_id, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 9999999}
   validates :images, presence: true
 
   scope :category, ->(category_id) {where(category_id: category_id).order(created_at: "DESC").limit(10)}
