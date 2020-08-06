@@ -4,8 +4,8 @@
       = link_to root_path do
         = image_tag "material/logo/logo.png", class: "TopIcon"
     .ContentsNew__middleWrapper
-      .ExhibitionForm
-        = form_with model: @content, local: true do |f|
+      = form_with model: @content do |f|
+        .ExhibitionForm
           .ExhibitionForm__normal
             .ExhibitionForm__body
               .PhotosTop
@@ -17,19 +17,46 @@
                 .PhotosMiddle
                   %p.PhotosMiddle__text
                     最大5枚までアップロードできます
-                = f.fields_for :images do |image|
                   .clearfix
                     // 写真のプレビューとインプットボタンのul
                     %ul#previews
-                      %li.input
-                        // 画像を取り込むインプットボタン
-                        %label.upload-label
-                          .upload-label__text
-                            ドラッグアンドドロップ
-                            %br
-                            またはクリックしてファイルをアップロード
-                            .input-area
-                              = image.file_field :content_image, class: "hidden image_upload"
+                      = f.fields_for :image do |image|
+                        - @content.images.each_with_index do |img, i|
+                          %li.image-preview
+                            %label.upload-label{style:"display: none;"}
+                              .upload-label__text
+                                ドラッグアンドドロップ
+                                %br
+                                またはクリックしてファイルをアップロード
+                                .input-area
+                                  = image.file_field :name, value: img.content_image ,class: "hidden image_upload"
+                                  = image.hidden_field :id, value: img.id, name:"content[image][#{i}]"
+                            .image-preview__wapper
+                              = image_tag img.content_image.to_s, class:"preview"
+                            .image-preview_btn
+                              .image-preview_btn_delete 削除
+                      -# -@content.images.each_with_index do |image,i|
+                      -#   -if image.persisted?
+                      -#     %li.image-preview{style: "width: 114px;"}
+                      -#       -# %label.upload-label{style: "display: none;"}
+                      -#       %label.upload-label{style: "display: none;"}
+                      -#       .image-preview__wapper{data: {index: i}}
+                      -#         =image_tag(image.content_image.url, class: "preview")
+                      -#       .image-preview__btn{data: {index: i}}
+                      -#         .image-preview_btn_delete  削除
+                      -# %li.input{style: "width: calc(100%);"}
+                      -#   %label.upload-label
+                      -#     .upload__text
+                      -#       ドラッグアンドドロップ
+                      -#       %br
+                      -#       またはクリックしてファイルをアップロード
+                      -#     = f.fields_for :images do |image|
+                      -#       .input-area
+                      -#         = image.file_field :content_image, class: "hidden image_upload", data: {index: image.index}
+                      -#       -if image.object.persisted?
+                      -#         = image.check_box :_destroy, class: ".hidden-destroy"
+                            
+                    
           .ExhibitionForm__normal
             .ExhibitionForm__body
               .TitleTop
@@ -65,7 +92,10 @@
                   %span.Required
                     必須
               .CategoryBottom{id: "category__box--parent"}
-                = f.collection_select :category_id, @category_parent_array, :id, :name,{prompt:"選択して下さい"},{class:"FormBox"}
+                = f.collection_select :category_id, @category_parent_array, :id, :name,{prompt:"選択して下さい",selected:@grandchild.root_id},{class:"FormBox"}
+                //子カテゴリ
+                = f.collection_select :category_id, @category_child_array, :id, :name,{prompt:"選択して下さい",selected:@grandchild.parent_id},{class:"FormBox childcategorys", id: "child__category"}
+                = f.collection_select :category_id, @category_grandchild_array, :id, :name,{prompt:"選択して下さい"},{class:"FormBox childcategorys", id: "grandchild__category"}
               .Error
             .ExhibitionForm__body.NotFirstChild#SizeBox
               .CategoryTop
@@ -149,7 +179,7 @@
                   = f.text_field :price, class: 'FormBox', placeholder: '0'
               .Error
           .ExhibitionForm__exhibition
-            = f.submit "出品する", class: "ExhibitionBtn"
+            = f.submit "編集する", class: "ExhibitionBtn"
             .Return
               もどる
           .ExhibitionForm__precautions
@@ -157,4 +187,4 @@
               禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。
     .ContentsNew__bottomWrapper
       = link_to root_path do
-        = image_tag "material/logo/logo.png", class: "BottomIcon"
+        = image_tag "material/logo/logo-white.png", class: "BottomIcon"
