@@ -44,7 +44,7 @@
               .Payment__method
                 支払い方法
               .Payment__registration
-                = link_to "#", class: "PaymentRegistration" do
+                = link_to new_card_path, class: "PaymentRegistration" do
                   =icon("fas", "plus-circle") 
                   登録してください
             .Error

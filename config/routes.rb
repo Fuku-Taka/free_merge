@@ -32,6 +32,6 @@ Rails.application.routes.draw do
       patch 'reserve_cancel'
     end
   end
-  resources :cards, only: [:show]
+  resources :cards, only: [:show, :new, :index, :create, :destroy]
   resources :categories, only: [:index, :show]
 end
