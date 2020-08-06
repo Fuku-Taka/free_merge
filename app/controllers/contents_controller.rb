@@ -1,5 +1,6 @@
 class ContentsController < ApplicationController
   before_action :set_content, only: [:show, :destroy]
+  before_action :set_contents
 
   def index
     pickup_category_content = Content.order("RAND()").find_by(buyer_id: nil)
@@ -8,7 +9,9 @@ class ContentsController < ApplicationController
     @pickup_category = Category.find(pickup_category_child.ancestry)
     @contents_category = Content.where(category_id: @pickup_category.indirect_ids).where(buyer_id: nil).order("RAND()").limit(5).includes(:images)
     @pickup_brand_content = Content.order("RAND()").where.not(brand: "").find_by(buyer_id: nil)
-    @contents_brand = Content.where(brand: @pickup_brand_content.brand).where(buyer_id: nil).order("RAND()").limit(5).includes(:images)
+    if @pickup_brand_content
+      @contents_brand = Content.where(brand: @pickup_brand_content.brand).where(buyer_id: nil).order("RAND()").limit(5).includes(:images)
+    end
   end
 
   def show
@@ -56,6 +59,7 @@ class ContentsController < ApplicationController
     @category_grandchildren = Category.find("#{params[:child_id]}").children
   end
 
+
   private
 
   def content_params
@@ -64,6 +68,10 @@ class ContentsController < ApplicationController
 
   def set_content
     @content = Content.find(params[:id])
+  end
+
+  def set_contents
+    @contents = Content.all.includes(:images)
   end
 
 end
