@@ -108,6 +108,8 @@
             - if user_signed_in? && current_user.id == @content.user_id
               .ItemBox__delete
                 = link_to "削除する", content_path(@content.id), method: :delete, class:"deleteBtn"
+              .ItemBox__edit
+                = link_to "編集する", edit_content_path(@content.id), method: :get, class:"editBtn"
         .CommentBox
           = form_with(id: "new_comment") do |f|
             = f.text_area :content, class: 'commentbody'
