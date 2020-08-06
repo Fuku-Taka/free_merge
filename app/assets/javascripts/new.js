@@ -17,12 +17,7 @@ $(document).on('turbolinks:load', function(){
         'width': `100%`
       })
     }
-    // else if($lis.length <= 9 ){
-    //   $ul.append(append_input)
-    //   $('#previews .input').css({
-    //     'width': `calc(100% - (20% * (${$lis.length} - 5 )))`
-    //   })
-    // }
+    
   }
 
   //newにおいては、下記が本題
@@ -89,14 +84,7 @@ $(document).on('turbolinks:load', function(){
           'width': `100%`
         })
       }
-      // ９個のプレビューのとき、1個のinputを追加。最後の数は9です。
-      // else if($lis.length <= 9 ){
-      //   $li.addClass('image-preview');
-      //   $ul.append(append_input)
-      //   $('#previews li:last-child').css({
-      //     'width': `calc(100% - (20% * (${$lis.length} - 5 )))`
-      //   })
-      // }
+      
 
       //inputの最後の"data-image"を取得して、input nameの番号を更新させてる。
       // これをしないと、それぞれのinputの区別ができず、最後の1枚しかDBに保存されません。

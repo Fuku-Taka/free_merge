@@ -14,13 +14,13 @@ $(document).on('click','.image-preview_btn_delete',function(){
   // まずはプレビューの数を数える。
   $lis = $ul.find('.image-preview');
   $label = $ul.find('.input');
-  if($lis.length <= 4 ){
+  if($lis.length <= 3 ){
     // inputのサイズを変更
     $('#previews li:last-child').css({
       'width': `calc(100% - (20% * ${$lis.length}))`
     })
   }
-  else if($lis.length == 5 ){
+  else if($lis.length == 4 ){
     // inputのサイズを変更
     $('#previews li:last-child').css({
       'width': `100%`

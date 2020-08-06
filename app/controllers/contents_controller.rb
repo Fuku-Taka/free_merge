@@ -54,14 +54,7 @@ class ContentsController < ApplicationController
     end
   end
 
-  def edit
-   
-    # if user_signed_in?
-    #   @content.images.build
-    # else
-    #   redirect_to root_path
-    # end
-    
+  def edit   
   end
 
   def update
@@ -78,15 +71,12 @@ class ContentsController < ApplicationController
 
           end
         else
-          # imageハッシュがない = 投稿済みの画像をすべてedit画面で消しているので、商品に紐づく投稿済み画像を削除する。
-          # @product.images.destroy = nil と削除されないので、each do で一つずつ削除する
           before_images_ids.each do |before_img_id|
             Image.find(before_img_id).destroy 
           end
         end
-        @content.update!(content_params)
-        # @size = @content.categories[1].sizes[0]
-        # @content.update(size: nil) unless @size
+        @content.update(content_params)
+ 
         redirect_to :root, notice: "商品を更新しました"
       else
         render 'edit'
@@ -94,12 +84,6 @@ class ContentsController < ApplicationController
     else
       redirect_back(fallback_location: root_path,flash: {success: '画像がありません'})
     end
-    # @content.images.present?
-    # if @content.update!(content_params)
-    #   redirect_to root_path      
-    # else
-    #   render :edit
-    # end
   end
 
   def get_category_children
