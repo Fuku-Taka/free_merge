@@ -152,3 +152,5 @@
     @contents_category = Content.where(category_id: @pickup_category.indirect_ids).where(buyer_id: nil).order("RAND()").limit(5).includes(:images)
     @pickup_brand_content = Content.order("RAND()").where.not(brand: "").find_by(buyer_id: nil)
     @contents_brand = Content.where(brand: @pickup_brand_content.brand).where(buyer_id: nil).order("RAND()").limit(5).includes(:images)
+
+    add_reference :contents, :seller, foreign_key: {to_table: :users}, null: false

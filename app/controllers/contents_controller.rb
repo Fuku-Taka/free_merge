@@ -1,19 +1,23 @@
 class ContentsController < ApplicationController
 
-  before_action :set_content, only: [:show, :destroy, :edit, :update]
+  before_action :set_content, only: [:show, :destroy, :edit, :update, :buy]
   before_action :content_category, only: [:edit, :update]
   before_action :set_contents
+  before_action :set_current_user_products,only:[:p_transaction,:p_exhibiting,:p_soldout]
+  before_action :set_user,only:[:p_transaction,:p_exhibiting,:p_soldout]
 
 
   def index
-    pickup_category_content = Content.order("RAND()").find_by(buyer_id: nil)
-    pickup_category_grandchild = Category.find(pickup_category_content.category_id)
-    pickup_category_child = Category.find(pickup_category_grandchild.parent_id)
-    @pickup_category = Category.find(pickup_category_child.ancestry)
-    @contents_category = Content.where(category_id: @pickup_category.indirect_ids).where(buyer_id: nil).order("RAND()").limit(5).includes(:images)
-    @pickup_brand_content = Content.order("RAND()").where.not(brand: "").find_by(buyer_id: nil)
-    if @pickup_brand_content
-      @contents_brand = Content.where(brand: @pickup_brand_content.brand).where(buyer_id: nil).order("RAND()").limit(5).includes(:images)
+    unless @contents.length == 0
+      pickup_category_content = Content.order("RAND()").find_by(buyer_id: nil)
+      pickup_category_grandchild = Category.find(pickup_category_content.category_id)
+      pickup_category_child = Category.find(pickup_category_grandchild.parent_id)
+      @pickup_category = Category.find(pickup_category_child.ancestry)
+      @contents_category = Content.where(category_id: @pickup_category.indirect_ids).where(buyer_id: nil).order("RAND()").limit(5).includes(:images)
+      @pickup_brand_content = Content.order("RAND()").where.not(brand: "").find_by(buyer_id: nil)
+      if @pickup_brand_content
+        @contents_brand = Content.where(brand: @pickup_brand_content.brand).where(buyer_id: nil).order("RAND()").limit(5).includes(:images)
+      end
     end
   end
 
@@ -94,6 +98,21 @@ class ContentsController < ApplicationController
     @category_grandchildren = Category.find("#{params[:child_id]}").children
   end
 
+  def buy
+    @content.update(auction_id: current_user.id)
+  end
+
+  def p_exhibiting #出品中のアクション
+
+  end
+
+  def p_transaction  #取引中のアクション
+
+  end
+
+  def p_soldout    #売却済みのアクション
+
+  end
 
   private
 
@@ -115,7 +134,18 @@ class ContentsController < ApplicationController
   end
 
   def set_contents
-    @contents = Content.all.includes(:images)
+    @contents = Content.all.includes(:seller,:buyer,:auction,:images)
   end
 
+  def set_current_user_contents
+    if user_signed_in? 
+      @contents = current_user.contents.includes(:seller,:buyer,:auction,:images)
+    else
+      redirect_to new_user_session_path
+    end
+  end
+
+  def set_user
+    @user = User.find(current_user.id)
+  end
 end

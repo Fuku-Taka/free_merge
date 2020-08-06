@@ -32,7 +32,9 @@ ActiveRecord::Schema.define(version: 2020_07_27_064455) do
   end
 
   create_table "contents", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.bigint "seller_id", null: false
+    t.bigint "buyer_id"
+    t.bigint "auction_id"
     t.string "name", null: false
     t.integer "price", null: false
     t.text "explain", null: false
@@ -43,10 +45,11 @@ ActiveRecord::Schema.define(version: 2020_07_27_064455) do
     t.integer "shipment", null: false
     t.string "brand"
     t.integer "category_id"
-    t.integer "buyer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_contents_on_user_id"
+    t.index ["auction_id"], name: "index_contents_on_auction_id"
+    t.index ["buyer_id"], name: "index_contents_on_buyer_id"
+    t.index ["seller_id"], name: "index_contents_on_seller_id"
   end
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -78,6 +81,8 @@ ActiveRecord::Schema.define(version: 2020_07_27_064455) do
   end
 
   add_foreign_key "addresses", "users"
-  add_foreign_key "contents", "users"
+  add_foreign_key "contents", "users", column: "auction_id"
+  add_foreign_key "contents", "users", column: "buyer_id"
+  add_foreign_key "contents", "users", column: "seller_id"
   add_foreign_key "images", "contents"
 end
