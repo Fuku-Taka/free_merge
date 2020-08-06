@@ -117,7 +117,7 @@ class ContentsController < ApplicationController
   private
 
   def content_params
-    params.require(:content).permit(:name, :category_id, :price, :explain, :size, :brand, :status, :postage, :shipment, :prefecture, images_attributes: [:content_image, :id, :_destroy] ).merge(user_id: current_user.id)
+    params.require(:content).permit(:name, :category_id, :price, :explain, :size, :brand, :status, :postage, :shipment, :prefecture, images_attributes: [:content_image, :id, :_destroy] ).merge(seller_id: current_user.id)
   end
 
   def set_content
