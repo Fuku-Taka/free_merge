@@ -81,119 +81,50 @@
     .PicupContainer__productBox
       .ProductHead
         = link_to "#" do
-          %h3.ProductHead__title 新規投稿商品
+          %h3.ProductHead__title
+            = @pickup_category.name
       .ProductLists
-        .ProductList
+        - @contents_category.each do |content|
+          .ProductList
+            = link_to content_path(content) do
+              %figure.ProductList__img
+                = image_tag (content.images.find_by(content_id: content.id).content_image.url)
+              .ProductList__body
+                %h3.Name
+                  = content.name
+                .Details
+                  %ul
+                    %li
+                      = number_to_currency(content.price, unit: "円", strip_insignificant_zeros: true)
+                    %li
+                      = icon('fa', 'star')
+                      0
+                  %p (税込)
+  - if @pickup_brand_content
+    %section.PicupContainer
+      %h2.PicupContainer__head ピックアップブランド
+      .PicupContainer__productBox
+        .ProductHead
           = link_to "#" do
-            %figure.ProductList__img
-              = image_tag "material/pict/pict-reason-01.jpg"
-            .ProductList__body
-              %h3.Name ee
-              .Details
-                %ul
-                  %li 1000円
-                  %li
-                    = icon('fa', 'star')
-                    0
-                %p (税込)
-        .ProductList
-          = link_to "#" do
-            %figure.ProductList__img
-              = image_tag "material/pict/pict-reason-01.jpg"
-            .ProductList__body
-              %h3.Name ee
-              .Details
-                %ul
-                  %li 1000円
-                  %li
-                    = icon('fa', 'star')
-                    0
-                %p (税込)
-        .ProductList
-          = link_to "#" do
-            %figure.ProductList__img
-              = image_tag "material/pict/pict-reason-01.jpg"
-            .ProductList__body
-              %h3.Name ee
-              .Details
-                %ul
-                  %li 1000円
-                  %li
-                    = icon('fa', 'star')
-                    0
-                %p (税込)
-        .ProductList
-          = link_to "#" do
-            %figure.ProductList__img
-              = image_tag "material/pict/pict-reason-01.jpg"
-            .ProductList__body
-              %h3.Name ee
-              .Details
-                %ul
-                  %li 1000円
-                  %li
-                    = icon('fa', 'star')
-                    0
-                %p (税込)
-  %section.PicupContainer
-    %h2.PicupContainer__head ピックアップブランド
-    .PicupContainer__productBox
-      .ProductHead
-        = link_to "#" do
-          %h3.ProductHead__title アーカイバ
-      .ProductLists
-        .ProductList
-          = link_to "#" do
-            %figure.ProductList__img
-              = image_tag "material/pict/pict-reason-01.jpg"
-            .ProductList__body
-              %h3.Name ee
-              .Details
-                %ul
-                  %li 1000円
-                  %li
-                    = icon('fa', 'star')
-                    0
-                %p (税込)
-        .ProductList
-          = link_to "#" do
-            %figure.ProductList__img
-              = image_tag "material/pict/pict-reason-01.jpg"
-            .ProductList__body
-              %h3.Name ee
-              .Details
-                %ul
-                  %li 1000円
-                  %li
-                    = icon('fa', 'star')
-                    0
-                %p (税込)
-        .ProductList
-          = link_to "#" do
-            %figure.ProductList__img
-              = image_tag "material/pict/pict-reason-01.jpg"
-            .ProductList__body
-              %h3.Name ee
-              .Details
-                %ul
-                  %li 1000円
-                  %li
-                    = icon('fa', 'star')
-                    0
-                %p (税込)
-        .ProductList
-          = link_to "#" do
-            %figure.ProductList__img
-              = image_tag "material/pict/pict-reason-01.jpg"
-            .ProductList__body
-              %h3.Name ee
-              .Details
-                %ul
-                  %li 1000円
-                  %li
-                    = icon('fa', 'star')
-                    0
-                %p (税込)
+            %h3.ProductHead__title
+              = @pickup_brand_content.brand
+        .ProductLists
+          - @contents_brand.each do |content|
+            .ProductList
+              = link_to content_path(content) do
+                %figure.ProductList__img
+                  = image_tag (content.images.find_by(content_id: content.id).content_image.url)
+                .ProductList__body
+                  %h3.Name
+                    = content.name
+                  .Details
+                    %ul
+                      %li
+                        = number_to_currency(content.price, unit: "円", strip_insignificant_zeros: true)
+                      %li
+                        = icon('fa', 'star')
+                        0
+                    %p (税込)
   = render "app_banner"
   = render "purchase_btn"
 = render "footer"

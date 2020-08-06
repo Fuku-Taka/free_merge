@@ -1,10 +1,15 @@
 = render "contents/header"
-
 .Main
-  .Single_container
-    %h2.Single_head 新規会員情報入力
-    .Register_form
-      = form_for(@address, url: addresses_path, method: :post) do |f|
+  = form_with model: @address, local: true do |f|
+    .Single_container
+      %h2.Single_head 新規会員情報入力
+      .Register_form
+        - if @address.errors.any?
+          .SettingAddressForm__errors
+            %h2= "#{@address.errors.full_messages.count}件のエラーが発生しました。"
+            %ul
+              - @address.errors.full_messages.each do |message|
+                %li= message
         .field
           = f.label :郵便番号
           %span.field__require

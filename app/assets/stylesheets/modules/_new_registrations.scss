@@ -1,3 +1,45 @@
+.SettingAddressForm__errors {
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  overflow: hidden;
+  h2 {
+    font-size: 15.5px;
+    color: #fff;
+    background-color: #ea352d;
+    padding: 5px 10px;
+  }
+  ul {
+    padding: 5px 10px;
+    li {
+      font-size: 12px;
+      line-height: 22px;
+    }
+  }
+}
+#error_explanation {
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  overflow: hidden;
+  h2 {
+    font-size: 15.5px;
+    color: #fff;
+    background-color: #ea352d;
+    padding: 5px 10px;
+  }
+  ul {
+    padding: 5px 10px;
+    li {
+      font-size: 12px;
+      line-height: 22px;
+    }
+  }
+}
 .Single_container{
   max-width: 343px;
   margin: 0 auto;

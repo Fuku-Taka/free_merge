@@ -443,10 +443,29 @@ body {
                   align-items: center;
                   margin: 0 auto;
                   width: 560px;
-                  .imgmain{
-                    object-fit: cover;
-                    height: 346px;
-                    width: 560px;
+                  .ItemBox__body--main{
+                    position: relative;
+                    overflow: hidden;
+                    img {
+                      object-fit: cover;
+                      height: 346px;
+                      width: 560px;  
+                    }
+                    .SoldLabel {
+                      background-color: red;
+                      color: white;
+                      height: 250px;
+                      width: 250px;
+                      font-size: 35px;
+                      font-weight: bold;
+                      letter-spacing: 3px;
+                      text-align: center;
+                      padding-top: 185px;
+                      transform: rotateZ(-45deg);
+                      position: absolute;
+                      top: -125px;
+                      left: -125px;
+                    }
                   }
                   ul{
                     display: flex;
@@ -456,9 +475,29 @@ body {
                     li{
                       width: 25%;
                       margin: 0 10px 0 0;
-                      .img{
-                        width: 140px;
-                        height: 87px;
+                      .ItemBox__body--sub {
+                        position: relative;
+                        overflow: hidden;
+                        img{
+                          object-fit: cover;
+                          width: 140px;
+                          height: 87px;
+                        }
+                        .SoldLabel {
+                          background-color: red;
+                          color: white;
+                          height: 62.5px;
+                          width: 62.5px;
+                          font-size: 9px;
+                          font-weight: bold;
+                          letter-spacing: 1px;
+                          text-align: center;
+                          padding-top: 47px;
+                          transform: rotateZ(-45deg);
+                          position: absolute;
+                          top: -31.25px;
+                          left: -31.25px;
+                        }
                       }
                     }
                   }
@@ -473,7 +512,6 @@ body {
               span{
                 font-size: 46px;
                 font-weight: bold;
-                margin: 0 10px 0 0;
               }
             }
             &__priceDetail{
@@ -531,6 +569,21 @@ body {
                 border: 1px solid #333;
                 text-decoration: none;
                 font-size: 14px;
+              }
+            }
+            &__soldout {
+              text-align: center;
+              margin-bottom: 20px;
+              .SoldOutBtn {
+                line-height: 30px;
+                background: #555555;
+                border: 1px solid #555555;
+                color: #fff;
+                font-size: 24px;
+                border-radius: 100px;
+                text-decoration: none;
+                padding: 10px 50px;
+                display: inline;
               }
             }
             &__buy{

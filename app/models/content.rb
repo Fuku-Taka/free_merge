@@ -1,7 +1,7 @@
 class Content < ApplicationRecord
   enum size: {"XXS以下": 0, "XS(SS)": 1, "S": 2, "M": 3, "L": 4, "XL(LL)": 5, "2XL(3L)": 6, "3XL(4L)": 7, "4XL(5L)以上": 8, "FREESIZE": 9, "該当なし": 10}
   enum status: {"新品・未使用": 1, "未使用に近い": 2,"目立った傷や汚れなし":3,"やや傷や汚れあり":4,"傷や汚れあり":5,"全体的に状態が悪い":6}
-  enum postage: {"送料込み（出品者負担)":1, "送料込み（出品者負担）":2, "着払い（購入者負担）":3, "着払い（購入者負担）":4}
+  enum postage: {"送料込み（出品者負担)":1, "着払い（購入者負担）":2}
   enum shipment: {"1~2日で発送":1,  "2〜3日で発送":2,"4〜7日で発送":3}
   enum prefecture:{
     "北海道":1,"青森県":2,"岩手県":3,"宮城県":4,"秋田県":5,"山形県":6,"福島県":7,
@@ -20,7 +20,8 @@ class Content < ApplicationRecord
 
   validates :name, :explain, presence: true
   validates :price,presence: true,numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999}
-  validates :category_id, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 1000}
+  validates :category_id, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 9999999}
+  validates :images, presence: true
 
   scope :category, ->(category_id) {where(category_id: category_id).order(created_at: "DESC").limit(10)}
 end
