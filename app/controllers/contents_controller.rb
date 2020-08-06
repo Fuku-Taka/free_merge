@@ -77,12 +77,12 @@ class ContentsController < ApplicationController
         end
         @content.update(content_params)
  
-        redirect_to :root, notice: "商品を更新しました"
+        redirect_to content_path(@content.id), notice: "商品を更新しました"
       else
         render 'edit'
       end
     else
-      redirect_back(fallback_location: root_path,flash: {success: '画像がありません'})
+      redirect_back(fallback_location: root_path, notice: '必須項目を入力してください')
     end
   end
 
