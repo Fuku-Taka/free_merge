@@ -86,7 +86,7 @@ class ContentsController < ApplicationController
         render 'edit'
       end
     else
-      redirect_back(fallback_location: root_path, notice: '必須項目を入力してください')
+      redirect_back(fallback_location: root_path, notice: '画像を選択してください')
     end
   end
 
