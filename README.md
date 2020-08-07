@@ -63,13 +63,15 @@
 |name|string|null: false|
 |price|integer|null: false|
 |explain|text|null: false|
-|status_id|references|null: false, foreign_key: true|
-|size_id|references|null: false, foreign_key: true|
+|status|integer|null: false|
+|size|integer|null: false|
 |postage|string|null: false|
-|prefecture_id|references|null: false, foreign_key: true|
-|shipment_id|references|null: false, foreign_key: true|
+|prefecture|integer|null: false|
+|shipment|integer|null: false|
 |brand|string||
-|buyer_id|references|null: false, foreign_key: true|
+|buyer|references|foreign_key: true|
+|seller|references|foreign_key: true, null: false|
+|auction|references|foreign_key: true|
 
 ### Association
 
@@ -82,7 +84,7 @@
 - has_many :images, dependent: :destroy
 
 
-## statusesテーブル
+## statuses(active_hash)テーブル
 
 |Column|Type|Options|
 |------|----|-------|
@@ -94,7 +96,7 @@
 
 - has_many :contents
 
-## sizesテーブル
+## sizes(active_hash)テーブル
 
 |Column|Type|Options|
 |------|----|-------|
@@ -117,7 +119,7 @@
 - has_many :contents
 
 
-## shipmentテーブル
+## shipment(active_hash)テーブル
 
 |Column|Type|Options|
 |------|----|-------|
