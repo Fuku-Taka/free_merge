@@ -1,6 +1,7 @@
 class CardsController < ApplicationController
   require 'payjp'
   before_action :set_card
+  before_action :set_secretkey, only: [:index ,:create, :destroy, :pay]
 
   def index
     @cards = Card.all
@@ -36,8 +37,6 @@ class CardsController < ApplicationController
 
   def destroy
     # 今回はクレジットカードを削除するだけでなく、PAY.JPの顧客情報も削除する。これによりcreateメソッドが複雑にならない。
-    # PAY.JPの秘密鍵をセットして、PAY.JPから情報をする。
-    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     # PAY.JPの顧客情報を取得
     customer = Payjp::Customer.retrieve(@card.payjp_id)
     customer.delete # PAY.JPの顧客情報を削除
@@ -52,5 +51,32 @@ class CardsController < ApplicationController
 
   def set_card
     @card = Card.find_by(user_id: current_user.id) if Card.find_by(user_id: current_user.id).present?
+  end
+
+  def set_secretkey
+    Payjp.api_key = ENV["PAYJP_ACCESS_KEY"]
+  end
+
+  def set_card_brand(brand)
+    case brand
+    when "Visa"
+      @card_src = "card/visa.svg"
+      @card_alt = "visa"
+    when "JCB"
+      @card_src = "card/jcb.svg"
+      @card_alt = "jcb"
+    when "MasterCard"
+      @card_src = "card/master-card.svg"
+      @card_alt = "mastercard"
+    when "American Express"
+      @card_src = "card/american_express.svg"
+      @card_alt = "amex"
+    when "Diners Club"
+      @card_src = "card/dinersclub.svg"
+      @card_alt = "dinersclub"
+    when "Discover"
+      @card_src = "card/discover.svg"
+      @card_alt = "discover"
+    end
   end
 end
