@@ -17,12 +17,13 @@
           .ExhibitionForm__body
             .ContentInfo
               .ContentImage
-                =image_tag("material/pict/pict-reason-01.jpg", class: "BuyContent", heigt: "100px", width: "100px")   
+                = image_tag("material/pict/pict-reason-01.jpg", class: "BuyContent", heigt: "100px", width: "100px")   
               .ContentName
-                ジャーマン
+                = @content.name
               .Content__cost
                 送料込み(税込)
-                %span¥1,900
+                %span
+                  = @content.price
             .Error
         %hr/
     .ContentsNew__middleWrapper
@@ -33,7 +34,7 @@
               .PriceInfo__name
                 支払い金額
               .PriceInfo__cost
-                ¥1,900
+                = @content.price
             .Error
         %hr/
     .ContentsNew__middleWrapper
@@ -44,9 +45,15 @@
               .Payment__method
                 支払い方法
               .Payment__registration
-                = link_to new_card_path, class: "PaymentRegistration" do
-                  =icon("fas", "plus-circle") 
-                  登録してください
+                - if @card_info.blank?
+                  %i.fas.fa-plus-circle
+                  %span.icon-register
+                  = link_to "登録してください", new_card_path
+                - else
+                  = "**** **** **** " + @card_info.last4
+                  - exp_month = @card_info.exp_month.to_s
+                  - exp_year = @card_info.exp_year.to_s.slice(2,3)
+                  = exp_month + " / " + exp_year
             .Error
         %hr/
     .ContentsNew__middleWrapper

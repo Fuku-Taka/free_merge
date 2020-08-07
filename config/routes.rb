@@ -12,7 +12,6 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update] do
     member do
       get 'logout'
-      get 'card'
     end
   end
 
@@ -32,6 +31,7 @@ Rails.application.routes.draw do
       patch 'reserve_cancel'
     end
   end
+
   resources :cards, only: [:show, :new, :index, :create, :destroy]
   resources :categories, only: [:index, :show]
 end

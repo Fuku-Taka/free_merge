@@ -36,14 +36,15 @@ class CardsController < ApplicationController
   end
 
   def destroy
-    # 今回はクレジットカードを削除するだけでなく、PAY.JPの顧客情報も削除する。これによりcreateメソッドが複雑にならない。
-    # PAY.JPの顧客情報を取得
-    customer = Payjp::Customer.retrieve(@card.payjp_id)
-    customer.delete # PAY.JPの顧客情報を削除
-    if @card.destroy # App上でもクレジットカードを削除
-      redirect_to action: "index", notice: "削除しました"
+    if !@card.blank? && @card.user_id == current_user.id
+      customer = Payjp::Customer.retrieve(@card.customer_id)
+      customer.delete
+      @card.delete
+      flash[:notice] = 'カードが削除されました'
+      redirect_to action: "index"
     else
-      redirect_to action: "index", alert: "削除できませんでした"
+      flash[:alert]  = 'カードが削除されませんでした'
+      redirect_to action: "index"
     end
   end
 

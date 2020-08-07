@@ -1,0 +1,34 @@
+= render partial: "contents/header"
+.Main
+  .mypage_a  
+    %main.mypage-contents.clearfix
+      .Chapter
+        .Chapter__title
+          支払い方法
+        .Chapter__inner
+          %section
+            .Chapter__inner__content
+              クレジットカード一覧
+          - if @card_info
+            - exp_month = sprintf("%02d", @card_info.exp_month )
+            - exp_year = @card_info.exp_year.to_s.slice(2,3)
+            %ul.settings-payment-list
+              %li
+                .right-single-content
+                  %figure
+                    = image_tag @card_src, alt: @card_alt, height: '20', width: '26'
+                  .settings-payment-num= "**** **** **** " + @card_info.last4
+                  .settings-payment-num= exp_month + " / " + exp_year
+                  = link_to "削除する", card_path(@card), class: "settings-payment-remove" , method: :delete
+          - else
+            %section.Chapter__inner__add
+              .Chapter__inner__add__btn
+                = icon("fa", "credit-card", class: "icon-card")
+                = link_to "クレジットカードを追加する", new_card_path , class: "card-btn"
+          .Chapter__inner__note
+            = link_to "#", class: "inner-note" do
+              支払い方法について ＞
+      = render partial: "users/show_side"
+  = render partial: "contents/app_banner"
+  = render partial: "contents/purchase_btn"
+= render partial: "contents/footer"

@@ -58,14 +58,21 @@ class ContentsController < ApplicationController
     end
   end
 
-  def purchase
-    @content = Content.find(params[:id])
-    Payjp.api_key = "sk_test_34b9c40833f2c90f739205a4"
-    charge = Payjp::Charge.create(
-    amount: @content.price,
-    card: params['payjp-token'],
-    currency: 'jpy'
-    )
+  def buy
+    @card = Card.find_by(user_id: current_user.id) if Card.find_by(user_id: current_user.id).present?
+    if @card.present? && !(@content.seller_id == current_user.id) && @content.buyer_id.nil?
+      Payjp.api_key = ENV["PAYJP_ACCESS_KEY"]
+      customer = Payjp::Customer.retrieve(@card.customer_id)
+      @card_info = customer.cards.data.first
+    else
+      if @card.blank?
+        flash[:alert] = 'カードを登録してください'
+        redirect_to controller: "cards", action: "new"
+      else
+        flash[:alert] = 'その商品は存在しません'
+        redirect_to root_path
+      end
+    end
   end
 
   def edit   
