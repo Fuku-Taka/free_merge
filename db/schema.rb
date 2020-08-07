@@ -91,7 +91,6 @@ ActiveRecord::Schema.define(version: 2020_08_06_023423) do
 
   add_foreign_key "addresses", "users"
   add_foreign_key "cards", "users"
-  add_foreign_key "contents", "users"
   add_foreign_key "contents", "users", column: "auction_id"
   add_foreign_key "contents", "users", column: "buyer_id"
   add_foreign_key "contents", "users", column: "seller_id"
