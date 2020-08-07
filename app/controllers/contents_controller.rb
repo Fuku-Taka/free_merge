@@ -99,6 +99,10 @@ class ContentsController < ApplicationController
   end
 
   def buy
+    unless user_signed_in? && current_user.id != @content.seller_id
+      redirect_to :root
+    end
+
     # @content.update(auction_id: current_user.id)
   end
 
