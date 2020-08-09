@@ -1,0 +1,71 @@
+= render partial: "contents/header"
+.Main
+  .mypage_a
+    %main.mypage-contents.clearfix
+      .Chapter
+        .Chapter__title
+          クレジットカード情報入力
+        .Chapter__inner
+          .c-content__credit-card
+            .c-content__credit-card__inner.marginT25
+              = form_with url: cards_path, method: :post, html: { name: "inputForm" }, class:"essential", local: true do |f|
+                .essential__box
+                  %span.essential__box__label
+                    カード番号
+                  %span.essential__box__need
+                    必須
+                = f.text_field :card_number, type: 'text', class: 'input-number', placeholder: '半角数字のみ 16桁', maxlength: "16", id: "card_number", pattern:'\d{16}'
+                %ul.card-list
+                  %li.card-list__icon
+                    = image_tag "card/visa.svg", height: "30", width: "45"
+                  %li.card-list__icon
+                    = image_tag "card/master-card.svg", height: "30", width: "45"
+                  %li.card-list__icon
+                    = image_tag "card/saison-card.svg", height: "30", width: "45"
+                  %li.card-list__icon
+                    = image_tag "card/jcb.svg", height: "30", width: "45"
+                  %li.card-list__icon
+                    = image_tag "card/american_express.svg", height: "30", width: "45"
+                  %li.card-list__icon
+                    = image_tag "card/diners.svg", height: "30", width: "45"
+                  %li.card-list__icon
+                    = image_tag "card/discover.svg", height: "30", width: "45"
+
+
+                .cards-expire
+                  .essential__box
+                    %span.essential__box__label
+                      有効期限
+                    %span.essential__box__need
+                      必須
+                    %br
+                    
+                  .cards-expire__wrap
+                    .cards-expire__wrap__item.marginT25
+                      = f.select :exp_month, [["01",1],["02",2],["03",3],["04",4],["05",5],["06",6],["07",7],["08",8],["09",9],["10",10],["11",11],["12",12]],{} , class: 'month', id: "exp_month"
+                      = icon("fas", "angle-down",class:"inputSelect")
+                      %span.expire-text
+                        月
+                      
+
+                    .cards-expire__wrap__item.marginT25
+                      = f.select :exp_year, [["20",2020],["21",2021],["22",2022],["23",2023],["24",2024],["25",2025],["26",2026],["27",2027],["28",2028],["29",2029]],{} , class: 'year', id: "exp_year"
+                      = icon("fas", "angle-down",class:"inputSelect")
+                      %span.expire-text
+                        年
+                      
+
+                .cards-expire
+                  .essential__box
+                    %span.essential__box__label
+                      セキュリティコード
+                    %span.essential__box__need
+                      必須
+                  = f.text_field :cvc, type: 'text', class: 'input-number', placeholder: 'カード背面4桁もしくは3桁の番号', maxlength: "4", id: "cvc"
+
+                .c-content-bottom#card_token
+                  = f.submit '登録する', class: 'c-content-bottom__add-btn', id: 'token_submit'
+      = render partial: "users/show_side"
+  = render partial: "contents/app_banner"
+  = render partial: "contents/purchase_btn"
+= render partial: "contents/footer"

@@ -17,6 +17,7 @@
           .ExhibitionForm__body
             .ContentInfo
               .ContentImage
+
                 = image_tag(@content.images[0].content_image.url, class: "BuyContent")
               .ContentName
                 = @content.name
@@ -44,10 +45,17 @@
             .Payment
               .Payment__method
                 支払い方法
-              .Payment__registration
-                = link_to "#", class: "PaymentRegistration" do
-                  =icon("fas", "plus-circle") 
-                  登録してください
+                .Payment__registration
+                  %section.creditcard_section
+                    - if @card_info.blank?
+                      %i.fas.fa-plus-circle
+                      %span.icon-register
+                      = link_to "登録してください", new_card_path
+                    - else
+                      = "**** **** **** " + @card_info.last4
+                      - exp_month = @card_info.exp_month.to_s
+                      - exp_year = @card_info.exp_year.to_s.slice(2,3)
+                      = exp_month + " / " + exp_year
             .Error
         %hr/
     .ContentsNew__middleWrapper
@@ -67,9 +75,7 @@
       .ExhibitionForm
         .ExhibitionForm__normal
           .ExhibitionForm__body
-            .BuyBtn
-              %button{type: "button", class:'BuyButton'}
-                購入する
+            = link_to "購入する", {controller: "cards", action: "pay", content_id: @content}, method: :post
 
     .ContentsNew__bottomWrapper
       = link_to root_path do

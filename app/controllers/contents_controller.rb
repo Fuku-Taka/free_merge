@@ -3,7 +3,7 @@ class ContentsController < ApplicationController
   before_action :set_content, only: [:show, :destroy, :edit, :update, :buy]
   before_action :content_category, only: [:edit, :update]
   before_action :set_contents
-  before_action :set_current_user_products,only:[:p_transaction,:p_exhibiting,:p_soldout]
+  before_action :set_current_user_contents,only:[:p_transaction,:p_exhibiting,:p_soldout]
   before_action :set_user,only:[:p_transaction,:p_exhibiting,:p_soldout]
 
 
@@ -99,11 +99,32 @@ class ContentsController < ApplicationController
   end
 
   def buy
-    unless user_signed_in? && current_user.id != @content.seller_id
-      redirect_to :root
+    @card = Card.find_by(user_id: current_user.id) if Card.find_by(user_id: current_user.id).present?
+    if @card.present? && !(@content.seller_id == current_user.id) && @content.buyer_id.nil?
+      Payjp.api_key = ENV["PAYJP_ACCESS_KEY"]
+      customer = Payjp::Customer.retrieve(@card.customer_id)
+      @card_info = customer.cards.data.first
+    else
+      if @card.blank?
+        flash[:alert] = 'カードを登録してください'
+        redirect_to controller: "cards", action: "new"
+      else
+        flash[:alert] = 'その商品は存在しません'
+        redirect_to root_path
+      end
+    end
+  end
+
+  def ok
+    @content = Content.where(buyer_id: current_user.id).order('updated_at DESC').first
+    
+    # エラーハンドリング
+    # プロダクトが存在しない、または現在の時刻と商品のアップ日時が5分離れている場合トップへリダイレクト
+    if @content.blank? || (Time.zone.now - @content.updated_at) / 60 > 5
+        flash[:alert] = 'ページの有効期限が切れてます'
+        redirect_to root_path
     end
 
-    # @content.update(auction_id: current_user.id)
   end
 
   def p_exhibiting #出品中のアクション
