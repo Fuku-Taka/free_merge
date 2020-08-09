@@ -4,7 +4,7 @@
   float: right;
   &__title{
     width: 700px;
-    height: 50px;
+    height: 100px;
     background-color: #ffffff;
     margin-top: 20px;
     font-weight: bold;
@@ -24,18 +24,16 @@
       height: 16px;
       font-size: 16px;
       font-weight: bold;
-      margin-left: 136px;
     }
     &__add{
       border-bottom: 1px solid #eee;
       width: 572px;
       height: 107px;
       display: flex;
-      justify-content: center;
+      justify-content: left;
+      margin-top: 32px;
       .card-btn{
         text-decoration: none;
-        background-color: #3ccace;
-        color: white;
         width: 320px;
         height: 50px;
         text-align: center;
@@ -47,10 +45,92 @@
     &__note{
       text-align: right;
       margin-top: 45px;
+    }
     .inner-note{
       color: #0099e8;
       text-decoration: none;
     }
+    .essential{
+      &__box{
+        align-items: center;
+        display: flex;
+        &__label{
+          font-size: 14px;
+          font-weight: 600;
+          line-height: 1.4em;
+        }
+        &__need{
+          margin-left: 8px;
+          font-size: 12px;
+          padding: 0, 4px;
+          background-color: #ff0211;
+          color: #fff;
+        }
+      }
+      .input-number{
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-family: inherit;
+        font-size: inherit;
+        height: 48px;
+        margin: 0;
+        outline: none;
+        padding: 0 16px;
+        width: inherit;
+      }
+
+      .card-list{
+        display: flex;
+      }
+      .cards-expire{
+        &__wrap{
+          display: flex;
+          &__item{
+            display: flex;
+            #exp_month{
+              appearance: none;
+              background-color: #fff;
+              border: 1px solid #ccc;
+              border-radius: 4px;
+              box-sizing: border-box;
+              color: #222;
+              font-size: 16px;
+              height: 48px;
+              line-height: 1;
+              margin: 0;
+              outline: none;
+              padding: 0 56px 0 16px;
+              width: 100%;
+            }
+            #exp_year{
+              appearance: none;
+              background-color: #fff;
+              border: 1px solid #ccc;
+              border-radius: 4px;
+              box-sizing: border-box;
+              color: #222;
+              font-size: 16px;
+              height: 48px;
+              line-height: 1;
+              margin: 0;
+              outline: none;
+              padding: 0 56px 0 16px;
+              width: 100%;
+            }
+            .inputSelect{
+              bottom: 0;
+              margin: auto;
+              pointer-events: none;
+            }
+            .expire-text{
+              margin: auto;
+              width: 46px;
+              text-align: center;
+            }
+          }
+        }
+      }
     }
   }
 }

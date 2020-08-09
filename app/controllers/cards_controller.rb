@@ -1,6 +1,7 @@
 class CardsController < ApplicationController
   require 'payjp'
   before_action :set_card
+  before_action :set_secretkey, only: [:index ,:create, :destroy, :pay]
 
   def index
     @cards = Card.all
@@ -35,16 +36,30 @@ class CardsController < ApplicationController
   end
 
   def destroy
-    # 今回はクレジットカードを削除するだけでなく、PAY.JPの顧客情報も削除する。これによりcreateメソッドが複雑にならない。
-    # PAY.JPの秘密鍵をセットして、PAY.JPから情報をする。
-    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-    # PAY.JPの顧客情報を取得
-    customer = Payjp::Customer.retrieve(@card.payjp_id)
-    customer.delete # PAY.JPの顧客情報を削除
-    if @card.destroy # App上でもクレジットカードを削除
-      redirect_to action: "index", notice: "削除しました"
+    if !@card.blank? && @card.user_id == current_user.id
+      customer = Payjp::Customer.retrieve(@card.customer_id)
+      customer.delete
+      @card.delete
+      flash[:notice] = 'カードが削除されました'
+      redirect_to action: "index"
     else
-      redirect_to action: "index", alert: "削除できませんでした"
+      flash[:alert]  = 'カードが削除されませんでした'
+      redirect_to action: "index"
+    end
+  end
+
+  def pay
+    content = Content.find(params[:content_id])
+    if @card.present? && @card.user_id == current_user.id && content.buyer_id.nil?
+      if Payjp::Charge.create(amount: content.price, customer: @card.customer_id, currency: 'jpy') && content.update(buyer_id: current_user.id)
+        redirect_to ok_contents_path
+      else
+        flash[:alert]  = 'サーバーでエラーが生じました'
+        redirect_to root_path
+      end
+    else
+      flash[:alert]  = 'カード情報を登録して下さい'
+      redirect_to root_path
     end
   end
 
@@ -52,5 +67,32 @@ class CardsController < ApplicationController
 
   def set_card
     @card = Card.find_by(user_id: current_user.id) if Card.find_by(user_id: current_user.id).present?
+  end
+
+  def set_secretkey
+    Payjp.api_key = ENV["PAYJP_ACCESS_KEY"]
+  end
+
+  def set_card_brand(brand)
+    case brand
+    when "Visa"
+      @card_src = "card/visa.svg"
+      @card_alt = "visa"
+    when "JCB"
+      @card_src = "card/jcb.svg"
+      @card_alt = "jcb"
+    when "MasterCard"
+      @card_src = "card/master-card.svg"
+      @card_alt = "mastercard"
+    when "American Express"
+      @card_src = "card/american_express.svg"
+      @card_alt = "amex"
+    when "Diners Club"
+      @card_src = "card/dinersclub.svg"
+      @card_alt = "dinersclub"
+    when "Discover"
+      @card_src = "card/discover.svg"
+      @card_alt = "discover"
+    end
   end
 end

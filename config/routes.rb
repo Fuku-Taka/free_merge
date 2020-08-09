@@ -12,7 +12,6 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update] do
     member do
       get 'logout'
-      get 'card'
     end
   end
 
@@ -20,6 +19,7 @@ Rails.application.routes.draw do
     collection do
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
+      get 'ok'
     end
     member do
       get 'get_category_children', defaults: { format: 'json' }
@@ -32,6 +32,11 @@ Rails.application.routes.draw do
       patch 'reserve_cancel'
     end
   end
-  resources :cards, only: [:show, :new, :index, :create, :destroy]
+
+  resources :cards, only: [:show, :new, :index, :create, :destroy] do
+    collection do
+      post 'pay'
+    end
+  end
   resources :categories, only: [:index, :show]
 end

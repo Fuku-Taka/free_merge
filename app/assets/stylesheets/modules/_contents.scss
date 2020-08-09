@@ -181,7 +181,7 @@ body {
     }
 
     .topMiddleDl{
-      background-image: url(/assets/material/pict/bg-topMiddleDl-pict.jpg);
+      background-image: image-url("material/pict/bg-topMiddleDl-pict.jpg");
       background-position: bottom right;
       height: 400px;
       background-size: cover;
@@ -612,6 +612,21 @@ body {
                 border-radius: 100px;
                 text-decoration: none;
                 padding: 5px;
+              }
+            }
+            &__edit{
+              text-align: center;
+              margin-top: 10px;
+              .editBtn{
+                line-height: 30px;
+                background: #3CCACE;
+                border: 1px solid #3CCACE;
+                color: #fff;
+                font-size: 15px;
+                border-radius: 100px;
+                text-decoration: none;
+                padding: 5px;
+                
               }
             }
           }

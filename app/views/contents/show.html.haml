@@ -12,7 +12,7 @@
               %li
                 .ItemBox__body--main
                   = image_tag(@content.images[0].content_image.url)
-                  - if @content.buyer_id?
+                  - if @content.auction_id?
                     .SoldLabel
                       SOLD
                 %ul
@@ -20,28 +20,28 @@
                     - if @content.images[1].present?
                       .ItemBox__body--sub
                         = image_tag(@content.images[1].content_image.url)
-                        - if @content.buyer_id?
+                        - if @content.auction_id?
                           .SoldLabel
                             SOLD
                   %li
                     - if @content.images[2].present?
                       .ItemBox__body--sub
                         = image_tag(@content.images[2].content_image.url)
-                        - if @content.buyer_id?
+                        - if @content.auction_id?
                           .SoldLabel
                             SOLD
                   %li
                     - if @content.images[3].present?
                       .ItemBox__body--sub
                         = image_tag(@content.images[3].content_image.url)
-                        - if @content.buyer_id?
+                        - if @content.auction_id?
                           .SoldLabel
                             SOLD
                   %li
                     - if @content.images[4].present?
                       .ItemBox__body--sub
                         = image_tag(@content.images[4].content_image.url)
-                        - if @content.buyer_id?
+                        - if @content.auction_id?
                           .SoldLabel
                             SOLD
           .ItemBox__price
@@ -59,7 +59,7 @@
               %tr
                 %th 出品者
                 %td
-                  = @content.user.nickname
+                  = @content.seller.nickname
               %tr
                 %th カテゴリー
                 %td
@@ -102,12 +102,14 @@
               .SoldOutBtn
                 売り切れ
           - else
-            - if user_signed_in? && current_user.id != @content.user_id
+            - if user_signed_in? && current_user.id != @content.seller_id
               .ItemBox__buy
                 = link_to "購入する", buy_content_path(@content.id), method: :get, class:"BuyConfirmationBtn"
-            - if user_signed_in? && current_user.id == @content.user_id
+            - if user_signed_in? && current_user.id == @content.seller_id
               .ItemBox__delete
                 = link_to "削除する", content_path(@content.id), method: :delete, class:"deleteBtn"
+              .ItemBox__edit
+                = link_to "編集する", edit_content_path(@content.id), method: :get, class:"editBtn"
         .CommentBox
           = form_with(id: "new_comment") do |f|
             = f.text_area :content, class: 'commentbody'

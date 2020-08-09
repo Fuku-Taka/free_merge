@@ -14,7 +14,9 @@ class Content < ApplicationRecord
     "福岡県":40,"佐賀県":41,"長崎県":42,"熊本県":43,"大分県":44,"宮崎県":45,"鹿児島県":46,"沖縄県":47}
 
   belongs_to :category
-  belongs_to :user
+  belongs_to :seller, class_name: "User", optional: true,foreign_key: "seller_id"
+  belongs_to :buyer, class_name: "User", optional: true,foreign_key: "buyer_id"
+  belongs_to :auction, class_name: "User", optional: true,foreign_key: "auction_id"
   has_many :images, dependent: :destroy
   accepts_nested_attributes_for :images, allow_destroy: true
 
