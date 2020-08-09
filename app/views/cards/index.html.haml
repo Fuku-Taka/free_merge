@@ -8,7 +8,7 @@
         .Chapter__inner
           %section
             .Chapter__inner__content
-              クレジットカード一覧
+              クレジットカード
           - if @card_info
             - exp_month = sprintf("%02d", @card_info.exp_month )
             - exp_year = @card_info.exp_year.to_s.slice(2,3)
@@ -23,8 +23,8 @@
           - else
             %section.Chapter__inner__add
               .Chapter__inner__add__btn
-                = icon("fa", "credit-card", class: "icon-card")
-                = link_to "クレジットカードを追加する", new_card_path , class: "card-btn"
+                = icon("fas", "plus-circle", class: "icon-card")
+                = link_to "新規カードを登録する", new_card_path , class: "card-btn"
           .Chapter__inner__note
             = link_to "#", class: "inner-note" do
               支払い方法について ＞

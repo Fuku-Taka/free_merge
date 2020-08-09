@@ -48,6 +48,21 @@ class CardsController < ApplicationController
     end
   end
 
+  def pay
+    content = Content.find(params[:content_id])
+    if @card.present? && @card.user_id == current_user.id && content.buyer_id.nil?
+      if Payjp::Charge.create(amount: content.price, customer: @card.customer_id, currency: 'jpy') && content.update(buyer_id: current_user.id)
+        redirect_to ok_contents_path
+      else
+        flash[:alert]  = 'サーバーでエラーが生じました'
+        redirect_to root_path
+      end
+    else
+      flash[:alert]  = 'カード情報を登録して下さい'
+      redirect_to root_path
+    end
+  end
+
   private
 
   def set_card
