@@ -17,13 +17,14 @@
           .ExhibitionForm__body
             .ContentInfo
               .ContentImage
-                = image_tag("material/pict/pict-reason-01.jpg", class: "BuyContent", heigt: "100px", width: "100px")   
+
+                = image_tag(@content.images[0].content_image.url, class: "BuyContent")
               .ContentName
                 = @content.name
               .Content__cost
-                送料込み(税込)
+                = "#{@content.postage}(税込)"
                 %span
-                  = @content.price
+                  = number_to_currency(@content.price, unit: "円", strip_insignificant_zeros: true)
             .Error
         %hr/
     .ContentsNew__middleWrapper
@@ -34,7 +35,7 @@
               .PriceInfo__name
                 支払い金額
               .PriceInfo__cost
-                = @content.price
+                = number_to_currency(@content.price, unit: "円", strip_insignificant_zeros: true)
             .Error
         %hr/
     .ContentsNew__middleWrapper

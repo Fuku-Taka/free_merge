@@ -86,7 +86,7 @@ class ContentsController < ApplicationController
         render 'edit'
       end
     else
-      redirect_back(fallback_location: root_path, notice: '画像を選択してください')
+      redirect_back(fallback_location: root_path, alert: '画像を選択してください')
     end
   end
 
@@ -124,6 +124,7 @@ class ContentsController < ApplicationController
         flash[:alert] = 'ページの有効期限が切れてます'
         redirect_to root_path
     end
+
   end
 
   def p_exhibiting #出品中のアクション
