@@ -1,6 +1,7 @@
 $(function(){
   if (document.getElementById("token_submit") != null) { //token_submitというidがnullの場合、下記コードを実行しない
-    Payjp.setPublicKey("pk_test_84391397b05d18b669e2f8a4"); //ここに公開鍵を直書き
+    // Payjp.setPublicKey(`Rails.application.credentials[:payjp_public_key]`); //credentialsに格納している公開鍵を設置
+    Payjp.setPublicKey(process.env.PAYJP_PUBLIC_KEY); //credentialsに格納している公開鍵を設置
     let btn = document.getElementById("token_submit"); //IDがtoken_submitの場合に取得されます
     btn.addEventListener("click", e => { //ボタンが押されたときに作動します
       e.preventDefault(); //ボタンを一旦無効化します
@@ -9,7 +10,8 @@ $(function(){
         cvc: document.getElementById("cvc").value,
         exp_month: document.getElementById("exp_month").value,
         exp_year: document.getElementById("exp_year").value
-      }; //入力されたデータを取得します。
+      }; //入力されたデータを取得します
+      
       
       Payjp.createToken(card, (status, response) => { //トークンを生成
         if (status === 200) { //成功した場合
@@ -23,7 +25,7 @@ $(function(){
           document.inputForm.submit();
           alert("登録が完了しました"); //確認用
         } else {
-          alert("正しいカード情報を入力してください。"); //確認用
+          alert("正しいカード情報を入力してください"); //確認用
         }
       });
     });
