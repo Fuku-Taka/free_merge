@@ -62,6 +62,7 @@ class ContentsController < ApplicationController
   end
 
   def update
+    
     if params[:content].keys.include?("image") || params[:content].keys.include?("images_attributes") 
       if @content.valid?
         if params[:content].keys.include?("image") 
@@ -75,6 +76,7 @@ class ContentsController < ApplicationController
 
           end
         else
+          before_images_ids = @content.images.ids
           before_images_ids.each do |before_img_id|
             Image.find(before_img_id).destroy 
           end
