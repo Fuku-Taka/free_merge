@@ -21,7 +21,8 @@ class CardsController < ApplicationController
   # 登録画面で入力した情報をDBに保存
   def create
     if params['payjp-token'].blank?
-      redirect_to action: "new", alert: "クレジットカードを登録できませんでした。"
+      flash[:alert] = 'クレジットカードを登録できませんでした'
+      redirect_to action: "new"
     else
 
       # ここで先ほど生成したトークンを顧客情報と紐付け、PAY.JP管理サイトに送信
