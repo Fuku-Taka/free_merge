@@ -70,7 +70,7 @@ class CardsController < ApplicationController
   end
 
   def set_secretkey
-    Payjp.api_key = ENV["PAYJP_ACCESS_KEY"]
+    Payjp.api_key = Rails.application.credentials[:payjp_access_key]
   end
 
   def set_card_brand(brand)
