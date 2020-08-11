@@ -176,10 +176,12 @@
           margin-bottom: 24px;
         }
         .Return {
-          color: #0095ee;
           text-align: center;
-          text-decoration: none;
-          height: 20px;
+          .ReturnBtn{
+            color: #0095ee;
+            text-decoration: none;
+            height: 20px;
+          }
         }
       }
       .ExhibitionForm__precautions {

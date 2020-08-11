@@ -151,7 +151,8 @@
           .ExhibitionForm__exhibition
             = f.submit "出品する", class: "ExhibitionBtn"
             .Return
-              もどる
+              = link_to root_path, class: "ReturnBtn" do
+                戻る
           .ExhibitionForm__precautions
             %p.PrecautionsText
               禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。

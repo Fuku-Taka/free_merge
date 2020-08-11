@@ -35,28 +35,6 @@
                               = image_tag img.content_image.to_s, class:"preview"
                             .image-preview_btn
                               .image-preview_btn_delete 削除
-                      -# -@content.images.each_with_index do |image,i|
-                      -#   -if image.persisted?
-                      -#     %li.image-preview{style: "width: 114px;"}
-                      -#       -# %label.upload-label{style: "display: none;"}
-                      -#       %label.upload-label{style: "display: none;"}
-                      -#       .image-preview__wapper{data: {index: i}}
-                      -#         =image_tag(image.content_image.url, class: "preview")
-                      -#       .image-preview__btn{data: {index: i}}
-                      -#         .image-preview_btn_delete  削除
-                      -# %li.input{style: "width: calc(100%);"}
-                      -#   %label.upload-label
-                      -#     .upload__text
-                      -#       ドラッグアンドドロップ
-                      -#       %br
-                      -#       またはクリックしてファイルをアップロード
-                      -#     = f.fields_for :images do |image|
-                      -#       .input-area
-                      -#         = image.file_field :content_image, class: "hidden image_upload", data: {index: image.index}
-                      -#       -if image.object.persisted?
-                      -#         = image.check_box :_destroy, class: ".hidden-destroy"
-                            
-                    
           .ExhibitionForm__normal
             .ExhibitionForm__body
               .TitleTop
@@ -181,7 +159,8 @@
           .ExhibitionForm__exhibition
             = f.submit "編集する", class: "ExhibitionBtn"
             .Return
-              もどる
+              = link_to content_path(@content.id), class: "ReturnBtn" do
+                戻る
           .ExhibitionForm__precautions
             %p.PrecautionsText
               禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。
