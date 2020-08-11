@@ -1,4 +1,6 @@
-$(function(){
+// $(function(){
+  // $(document).ready(function(){
+$(document).on('turbolinks:load', function(){
   function appendOption(category){
     var html = `<option value="${category.id}">${category.name}</option>`;
     return html;
