@@ -44,20 +44,15 @@
 }
 
 .Payment{
-  font-size: 14px;
+  display: flex;
+  justify-content: space-around;
+  font-weight: 600;
   &__method{
-    font-weight: 600;
+    font-size: 18px;
     .PaymentRegistration{
       text-decoration: none;
       color: #0095ee;
     }
-  }
-}
-
-.Payment{
-  font-size: 14px;
-  &__method{
-    font-weight: 600;
   }
   &__registration{
     .PaymentRegistration{
@@ -86,9 +81,10 @@
     background: #3ccace;
     border: 1px solid #3ccace;
     border-radius: 4px;
-    width: 300px;
+    width: 20%;
     height: 50px;
     color: #fff;
     font-size: 18px;
+    text-decoration: none;
   }
 }

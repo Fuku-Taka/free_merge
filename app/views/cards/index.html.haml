@@ -16,7 +16,7 @@
               %li
                 .right-single-content
                   %figure
-                    = image_tag @card_src, alt: @card_alt, height: '20', width: '26'
+                    = image_tag @card_src, alt: @card_alt, height: '30', width: '39'
                   .settings-payment-num= "**** **** **** " + @card_info.last4
                   .settings-payment-num= exp_month + " / " + exp_year
                   = link_to "削除する", card_path(@card), class: "settings-payment-remove" , method: :delete

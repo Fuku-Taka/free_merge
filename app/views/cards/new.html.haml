@@ -5,9 +5,9 @@
       .Chapter
         .Chapter__title
           クレジットカード情報入力
-        .Chapter__inner
-          .c-content__credit-card
-            .c-content__credit-card__inner.marginT25
+        .Chapter__credit
+          .C-content
+            .C-content__credit-card
               = form_with url: cards_path, method: :post, html: { name: "inputForm" }, class:"essential", local: true do |f|
                 .essential__box
                   %span.essential__box__label
@@ -41,14 +41,14 @@
                     %br
                     
                   .cards-expire__wrap
-                    .cards-expire__wrap__item.marginT25
+                    .cards-expire__wrap__item
                       = f.select :exp_month, [["01",1],["02",2],["03",3],["04",4],["05",5],["06",6],["07",7],["08",8],["09",9],["10",10],["11",11],["12",12]],{} , class: 'month', id: "exp_month"
                       = icon("fas", "angle-down",class:"inputSelect")
                       %span.expire-text
                         月
                       
 
-                    .cards-expire__wrap__item.marginT25
+                    .cards-expire__wrap__item
                       = f.select :exp_year, [["20",2020],["21",2021],["22",2022],["23",2023],["24",2024],["25",2025],["26",2026],["27",2027],["28",2028],["29",2029]],{} , class: 'year', id: "exp_year"
                       = icon("fas", "angle-down",class:"inputSelect")
                       %span.expire-text
