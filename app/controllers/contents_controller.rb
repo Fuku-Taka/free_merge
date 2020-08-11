@@ -9,20 +9,20 @@ class ContentsController < ApplicationController
 
   def index
     unless @contents.length == 0
-      pickup_category_content = Content.order("RAND()").find_by(auction_id: nil)
+      pickup_category_content = Content.order("RAND()").find_by(buyer_id: nil)
       pickup_category_grandchild = Category.find(pickup_category_content.category_id)
       pickup_category_child = Category.find(pickup_category_grandchild.parent_id)
       @pickup_category = Category.find(pickup_category_child.ancestry)
-      @contents_category = Content.where(category_id: @pickup_category.indirect_ids).where(auction_id: nil).order("RAND()").limit(5).includes(:images)
-      @pickup_brand_content = Content.order("RAND()").where.not(brand: "").find_by(auction_id: nil)
+      @contents_category = Content.where(category_id: @pickup_category.indirect_ids).where(buyer_id: nil).order("RAND()").limit(5).includes(:images)
+      @pickup_brand_content = Content.order("RAND()").where.not(brand: "").find_by(buyer_id: nil)
       if @pickup_brand_content
-        @contents_brand = Content.where(brand: @pickup_brand_content.brand).where(auction_id: nil).order("RAND()").limit(5).includes(:images)
+        @contents_brand = Content.where(brand: @pickup_brand_content.brand).where(buyer_id: nil).order("RAND()").limit(5).includes(:images)
       end
     end
   end
 
   def show
-    @contents_category = Content.where(category_id: @content.category_id).where(auction_id: nil).order("RAND()").limit(3).includes(:images)
+    @contents_category = Content.where(category_id: @content.category_id).where(buyer_id: nil).order("RAND()").limit(3).includes(:images)
   end
   
 
