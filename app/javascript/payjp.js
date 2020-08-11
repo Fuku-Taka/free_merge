@@ -1,4 +1,5 @@
-$(function(){
+//$(function(){
+  $(document).on('turbolinks:load', function(){
   if (document.getElementById("token_submit") != null) { //token_submitというidがnullの場合、下記コードを実行しない
     // Payjp.setPublicKey(`Rails.application.credentials[:payjp_public_key]`); //credentialsに格納している公開鍵を設置
     Payjp.setPublicKey(process.env.PAYJP_PUBLIC_KEY); //credentialsに格納している公開鍵を設置
