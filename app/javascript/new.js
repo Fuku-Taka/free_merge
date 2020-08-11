@@ -1,4 +1,7 @@
-$(document).on('turbolinks:load', function(){
+// $(document).on('turbolinks:load', function(){
+$(document).ready(function(){
+
+
   // 下記はedit用です。できれば別ファイルで作成することを推奨。バグの元
   var append_input = $(`<li class="input"><label class="upload-label"><div class="upload-label__text">ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード<div class="input-area"><input class="hidden image_upload" type="file"></div></div></label></li>`)
   $ul = $('#previews')
