@@ -12,7 +12,7 @@
               %li
                 .ItemBox__body--main
                   = image_tag(@content.images[0].content_image.url)
-                  - if @content.auction_id?
+                  - if @content.buyer_id?
                     .SoldLabel
                       SOLD
                 %ul
@@ -20,28 +20,28 @@
                     - if @content.images[1].present?
                       .ItemBox__body--sub
                         = image_tag(@content.images[1].content_image.url)
-                        - if @content.auction_id?
+                        - if @content.buyer_id?
                           .SoldLabel
                             SOLD
                   %li
                     - if @content.images[2].present?
                       .ItemBox__body--sub
                         = image_tag(@content.images[2].content_image.url)
-                        - if @content.auction_id?
+                        - if @content.buyer_id?
                           .SoldLabel
                             SOLD
                   %li
                     - if @content.images[3].present?
                       .ItemBox__body--sub
                         = image_tag(@content.images[3].content_image.url)
-                        - if @content.auction_id?
+                        - if @content.buyer_id?
                           .SoldLabel
                             SOLD
                   %li
                     - if @content.images[4].present?
                       .ItemBox__body--sub
                         = image_tag(@content.images[4].content_image.url)
-                        - if @content.auction_id?
+                        - if @content.buyer_id?
                           .SoldLabel
                             SOLD
           .ItemBox__price
