@@ -70,7 +70,7 @@ class ContentsController < ApplicationController
           update_images_ids = params[:content][:image].values #投稿済み画像 
           before_images_ids = @content.images.ids
           #  商品に紐づく投稿済み画像が、投稿済みにない場合は削除する
-          # @product.images.ids.each doで、一つずつimageハッシュにあるか確認。なければdestroy
+          # @content.images.ids.each doで、一つずつimageハッシュにあるか確認。なければdestroy
           before_images_ids.each do |before_img_id|
             Image.find(before_img_id).destroy unless update_images_ids.include?("#{before_img_id}") 
 
@@ -88,7 +88,8 @@ class ContentsController < ApplicationController
         render 'edit'
       end
     else
-      redirect_back(fallback_location: root_path, alert: '画像を選択してください')
+      redirect_to content_path(@content.id), alert: '画像が選択されていないので変更がキャンセルされました'
+      # redirect_back(fallback_location: root_path, alert: '画像を選択してください')
     end
   end
 
