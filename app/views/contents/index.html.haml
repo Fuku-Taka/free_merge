@@ -76,6 +76,26 @@
           = image_tag 'material/icon/icon-04.png', class: "img"
         %h3.item__subtitle 様々な支払いに対応
         %p.item__detail お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
+  %section.ContentsContainer
+    %h2.ContentsContainer__head 商品一覧
+    .ContentsContainer__productBox
+      .ProductLists
+        - @contents_list.each do |content|
+          .ProductList
+            = link_to content_path(content) do
+              %figure.ProductList__img
+                = image_tag (content.images.find_by(content_id: content.id).content_image.url)
+              .ProductList__body
+                %h3.Name
+                  = content.name
+                .Details
+                  %ul
+                    %li
+                      = number_to_currency(content.price, unit: "円", strip_insignificant_zeros: true)
+                    %li
+                      = icon('fa', 'star')
+                      0
+                  %p (税込)
   - unless @contents.length == 0
     %section.PicupContainer
       %h2.PicupContainer__head ピックアップカテゴリー

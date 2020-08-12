@@ -8,6 +8,7 @@ class ContentsController < ApplicationController
 
 
   def index
+    @contents_list = Content.where(buyer_id: nil).limit(50).includes(:seller,:buyer,:auction,:images)
     unless @contents.length == 0
       pickup_category_content = Content.order("RAND()").find_by(buyer_id: nil)
       pickup_category_grandchild = Category.find(pickup_category_content.category_id)
