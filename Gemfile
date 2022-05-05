@@ -67,7 +67,7 @@ gem 'erb2haml'
 
 
 group :production do
-  gem 'unicorn'
+  gem 'unicorn', '5.4.1'
 end
 
 gem 'devise'
@@ -82,5 +82,3 @@ gem 'jquery-rails'
 gem 'rails-i18n'
 
 gem 'fog-aws'
-
-gem 'payjp'
