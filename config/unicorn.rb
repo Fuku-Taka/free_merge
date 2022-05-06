@@ -10,7 +10,8 @@ working_directory app_path
 pid "#{app_path}/tmp/pids/unicorn.pid"
 
 # listen "#{app_path}/shared/tmp/sockets/unicorn.sock"
-listen 3000
+# listen 3000
+listen "#{app_path}/tmp/sockets/unicorn.sock"
 
 # stderr_path "#{app_path}/shared/log/unicorn.stderr.log"
 stderr_path "#{app_path}/log/unicorn.stderr.log"
