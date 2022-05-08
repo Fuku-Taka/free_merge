@@ -1,9 +1,9 @@
 %header
   .HeaderItems
-    = link_to image_tag('material/logo/logo.png', class: "HeaderLogo"), root_path
+    = link_to image_tag("images/material/logo/logo.png", class: "HeaderLogo"), root_path
     %input.SearchForm{:name => "keyword", :placeholder => "キーワードから探す", :type => "text"}/
     %button.SearchBtn{:name => "btn", :placeholder => "検索", :type => "submit"}
-      = image_tag 'material/icon/icon-search1.png', class: "BtnImage"
+      = image_tag "images/material/icon/icon-search1.png", class: "BtnImage"
   .HeaderInfo
     .ContentGroup
       =link_to "カテゴリー", root_path, class: "Categorie"
