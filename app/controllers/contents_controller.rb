@@ -70,7 +70,7 @@ class ContentsController < ApplicationController
         # dbにある画像がedit画面で一部削除してるか確認
           update_images_ids = params[:content][:image].values #投稿済み画像 
           before_images_ids = @content.images.ids
-          #  商品に紐づく投稿済み画像が、投稿済みにない場合は削除する
+          # 商品に紐づく投稿済み画像が、投稿済みにない場合は削除する
           # @content.images.ids.each doで、一つずつimageハッシュにあるか確認。なければdestroy
           before_images_ids.each do |before_img_id|
             Image.find(before_img_id).destroy unless update_images_ids.include?("#{before_img_id}") 
@@ -131,15 +131,15 @@ class ContentsController < ApplicationController
 
   end
 
-  def p_exhibiting #出品中のアクション
+  def p_exhibiting  #出品中のアクション
 
   end
 
-  def p_transaction  #取引中のアクション
+  def p_transaction #取引中のアクション
 
   end
 
-  def p_soldout    #売却済みのアクション
+  def p_soldout     #売却済みのアクション
 
   end
 
