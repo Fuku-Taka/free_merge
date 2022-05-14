@@ -11,7 +11,7 @@ class Content < ApplicationRecord
   enum shipment: {
     "1〜２日で発送":1, "2〜3日で発送":2, "4〜7日で発送":3
   }
-  enum prefecture:{
+  enum prefecture: {
     "北海道":1, "青森県":2, "岩手県":3, "宮城県":4, "秋田県":5, "山形県":6, "福島県":7,
     "茨城県":8, "栃木県":9, "群馬県":10, "埼玉県":11, "千葉県":12, "東京都":13, "神奈川県":14,
     "新潟県":15, "富山県":16, "石川県":17, "福井県":18, "山梨県":19, "長野県":20,
@@ -23,16 +23,22 @@ class Content < ApplicationRecord
   }
 
   belongs_to :category
-  belongs_to :seller, class_name: "User", optional: true,foreign_key: "seller_id"
-  belongs_to :buyer, class_name: "User", optional: true,foreign_key: "buyer_id"
-  belongs_to :auction, class_name: "User", optional: true,foreign_key: "auction_id"
+  belongs_to :seller, class_name: "User", optional: true, foreign_key: "seller_id"
+  belongs_to :buyer, class_name: "User", optional: true, foreign_key: "buyer_id"
+  belongs_to :auction, class_name: "User", optional: true, foreign_key: "auction_id"
   has_many :images, dependent: :destroy
   accepts_nested_attributes_for :images, allow_destroy: true
 
   validates :name, :explain, presence: true
-  validates :price,presence: true,numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999}
-  validates :category_id, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 9999999}
+  validates :price, presence: true, numericality: {
+    only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999
+  }
+  validates :category_id, numericality: {
+    only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 9999999
+  }
   validates :images, presence: true
 
-  scope :category, ->(category_id) {where(category_id: category_id).order(created_at: "DESC").limit(10)}
+  scope :category, ->(category_id) {
+    where(category_id: category_id).order(created_at: "DESC").limit(10)
+  }
 end

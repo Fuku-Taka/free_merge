@@ -26,7 +26,6 @@ class ContentsController < ApplicationController
     @contents_category = Content.where(category_id: @content.category_id).where(buyer_id: nil).order("RAND()").limit(3).includes(:images)
   end
   
-
   def new
     @category_parent_array = Category.where(ancestry: nil)
     if user_signed_in?
@@ -146,13 +145,16 @@ class ContentsController < ApplicationController
   private
 
   def content_params
-    params.require(:content).permit(:name, :category_id, :price, :explain, :size, :brand, :status, :postage, :shipment, :prefecture, images_attributes: [:content_image, :id, :_destroy] ).merge(seller_id: current_user.id)
+    params.require(:content).permit(
+      :name, :category_id, :price, :explain,
+      :size, :brand, :status, :postage, :shipment, :prefecture,
+      images_attributes: [:content_image, :id, :_destroy]
+    ).merge(seller_id: current_user.id)
   end
 
   def set_content
     @content = Content.find(params[:id])
   end
-
 
   def content_category
     @grandchild = @content.category
