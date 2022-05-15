@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
+
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
@@ -13,6 +14,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def create
   #   super
   # end
+
   def create
     @user = User.new(sign_up_params)
     unless @user.valid?
@@ -23,7 +25,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     session["devise.regist_data"][:user]["password"] = params[:user][:password]
     @address = @user.build_address
     render :new_address and return
-   end
+  end
   
   def new_address
   end
@@ -43,14 +45,21 @@ class Users::RegistrationsController < Devise::RegistrationsController
   protected
   
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys:
-                         [:nickname,  :birthday, :first_name, :last_name, :ship_first_name_kana, :ship_family_name_kana])
+    devise_parameter_sanitizer.permit(
+      :sign_up, keys:[
+        :nickname, :birthday, :first_name, :last_name,
+        :ship_first_name_kana, :ship_family_name_kana
+      ]
+    )
   end
   
   def address_params
-    params.require(:address).permit( :postal_code, :prefecture,
-                                   :prefecture_id, :city, :address, :apartment)
+    params.require(:address).permit(
+      :postal_code, :prefecture, :prefecture_id,
+      :city, :address, :apartment
+    )
   end
+
   # GET /resource/edit
   # def edit
   #   super

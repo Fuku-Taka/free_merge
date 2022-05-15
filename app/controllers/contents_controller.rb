@@ -1,11 +1,11 @@
 class ContentsController < ApplicationController
 
-  before_action :set_content, only: [:show, :destroy, :edit, :update, :buy]
-  before_action :content_category, only: [:edit, :update]
   before_action :set_contents
-  before_action :set_current_user_contents,only:[:p_transaction,:p_exhibiting,:p_soldout]
-  before_action :set_user,only:[:p_transaction,:p_exhibiting,:p_soldout]
-
+  before_action :set_content, only: [:show, :destroy, :edit, :update, :buy]
+  before_action :set_current_user_contents, :set_user, only: [
+    :p_transaction, :p_exhibiting, :p_soldout
+  ]
+  before_action :content_category, only: [:edit, :update]
 
   def index
     @contents_list = Content.where(buyer_id: nil).limit(50).includes(:seller,:buyer,:auction,:images)
@@ -26,7 +26,6 @@ class ContentsController < ApplicationController
     @contents_category = Content.where(category_id: @content.category_id).where(buyer_id: nil).order("RAND()").limit(3).includes(:images)
   end
   
-
   def new
     @category_parent_array = Category.where(ancestry: nil)
     if user_signed_in?
@@ -62,19 +61,17 @@ class ContentsController < ApplicationController
   def edit   
   end
 
-  def update
-    
+  def update    
     if params[:content].keys.include?("image") || params[:content].keys.include?("images_attributes") 
       if @content.valid?
+      # @content.images.ids.をeach処理で一つずつimageハッシュに存在するか確認、不在ならばdestroy。
         if params[:content].keys.include?("image") 
         # dbにある画像がedit画面で一部削除してるか確認
           update_images_ids = params[:content][:image].values #投稿済み画像 
           before_images_ids = @content.images.ids
           # 商品に紐づく投稿済み画像が、投稿済みにない場合は削除する
-          # @content.images.ids.each doで、一つずつimageハッシュにあるか確認。なければdestroy
           before_images_ids.each do |before_img_id|
             Image.find(before_img_id).destroy unless update_images_ids.include?("#{before_img_id}") 
-
           end
         else
           before_images_ids = @content.images.ids
@@ -82,14 +79,18 @@ class ContentsController < ApplicationController
             Image.find(before_img_id).destroy 
           end
         end
+
         @content.update(content_params)
- 
+        
         redirect_to content_path(@content.id), notice: "商品を更新しました"
+        
       else
         render 'edit'
       end
+
     else
-      redirect_to content_path(@content.id), alert: '画像が選択されていないので変更がキャンセルされました'
+      redirect_to content_path(@content.id),
+        alert: '画像が選択されていないので変更がキャンセルされました'
       # redirect_back(fallback_location: root_path, alert: '画像を選択してください')
     end
   end
@@ -131,28 +132,30 @@ class ContentsController < ApplicationController
 
   end
 
-  def p_exhibiting  #出品中のアクション
-
+  #出品中のアクション
+  def p_exhibiting
   end
 
-  def p_transaction #取引中のアクション
-
+  #取引中のアクション
+  def p_transaction
   end
 
-  def p_soldout     #売却済みのアクション
-
+  #売却済みのアクション
+  def p_soldout
   end
 
   private
-
   def content_params
-    params.require(:content).permit(:name, :category_id, :price, :explain, :size, :brand, :status, :postage, :shipment, :prefecture, images_attributes: [:content_image, :id, :_destroy] ).merge(seller_id: current_user.id)
+    params.require(:content).permit(
+      :name, :category_id, :price, :explain,
+      :size, :brand, :status, :postage, :shipment, :prefecture,
+      images_attributes: [:content_image, :id, :_destroy]
+    ).merge(seller_id: current_user.id)
   end
 
   def set_content
     @content = Content.find(params[:id])
   end
-
 
   def content_category
     @grandchild = @content.category
@@ -163,12 +166,12 @@ class ContentsController < ApplicationController
   end
 
   def set_contents
-    @contents = Content.all.includes(:seller,:buyer,:auction,:images)
+    @contents = Content.all.includes(:seller, :buyer, :auction, :images)
   end
 
   def set_current_user_contents
     if user_signed_in? 
-      @contents = current_user.contents.includes(:seller,:buyer,:auction,:images)
+      @contents = current_user.contents.includes(:seller, :buyer, :auction, :images)
     else
       redirect_to new_user_session_path
     end

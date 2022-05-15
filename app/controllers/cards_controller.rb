@@ -1,11 +1,12 @@
 class CardsController < ApplicationController
   require 'payjp'
-  before_action :set_card
-  before_action :set_secretkey, only: [:index ,:create, :destroy, :pay]
 
+  before_action :set_card
+  before_action :set_secretkey, only: [:index, :create, :destroy, :pay]
+
+  # 以前にカード情報を登録していた場合、以前の登録カード情報を表示する
   def index
     @cards = Card.all
-    # カードがある場合、カードの情報をセットする
     if @card
       customer = Payjp::Customer.retrieve(@card.customer_id)
       @card_info = customer.cards.data.first
@@ -65,7 +66,6 @@ class CardsController < ApplicationController
   end
 
   private
-
   def set_card
     @card = Card.find_by(user_id: current_user.id) if Card.find_by(user_id: current_user.id).present?
   end
@@ -96,4 +96,5 @@ class CardsController < ApplicationController
       @card_alt = "discover"
     end
   end
+  
 end
