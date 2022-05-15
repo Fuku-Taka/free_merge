@@ -25,7 +25,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     session["devise.regist_data"][:user]["password"] = params[:user][:password]
     @address = @user.build_address
     render :new_address and return
-   end
+  end
   
   def new_address
   end
