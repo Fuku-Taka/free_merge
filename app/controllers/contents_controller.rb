@@ -1,11 +1,12 @@
 class ContentsController < ApplicationController
 
   before_action :set_contents
-  before_action :set_content, only: [:show, :destroy, :edit, :update, :buy]
-  before_action :set_current_user_contents, :set_user, only: [
-    :p_transaction, :p_exhibiting, :p_soldout
-  ]
-  before_action :content_category, only: [:edit, :update]
+  before_action :set_content,
+    only: [:show, :destroy, :edit, :update, :buy]
+  before_action :set_current_user_contents, :set_user, 
+    only: [:p_transaction, :p_exhibiting, :p_soldout]
+  before_action :content_category,
+    only: [:edit, :update]
 
   def index
     @contents_list = Content.where(buyer_id: nil).limit(50).includes(:seller,:buyer,:auction,:images)
