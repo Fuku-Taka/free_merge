@@ -8,12 +8,12 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
       t.string :encrypted_password, null: false, default: ""
       t.string :nickname,           null: false
       t.string :user_image
-      t.text :introduction
+      t.text   :introduction
       t.string :first_name,         null: false
       t.string :family_name,        null: false
       t.string :first_name_kana,    null: false
       t.string :family_name_kana,   null: false
-      t.date :birthday,             null: false
+      t.date   :birthday,           null: false
 
       ## Recoverable
       t.string   :reset_password_token
