@@ -289,7 +289,6 @@ ticket_7.children.create([{name: "ショッピング"},{name: "レストラン/�
 ticket_8 = ticket.children.create(name: "その他")
 ticket_8.children.create([{name: "すべて"}])
 
-
 # 自動車・オートバイ
 car_motorcycle = Category.create(name: "自動車・オートバイ")
 car_motorcycle_1 = car_motorcycle.children.create(name: "自動車本体")
