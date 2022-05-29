@@ -1,6 +1,6 @@
 = render partial: "contents/header"
 .Main
-  .mypage_a  
+  .mypage_a
     %main.mypage-contents.clearfix
       .main-content
         %section.user
@@ -11,14 +11,7 @@
           .return-top
             = link_to root_path do
               トップへ戻る
-
-
-
-
-
       = render "users/show_side"
-
-
   = render partial: "contents/app_banner"
   = render partial: "contents/purchase_btn"
 = render partial: "contents/footer"
