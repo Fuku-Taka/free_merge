@@ -1,11 +1,7 @@
-.mypage_a {
+.ShowMypage {
   width: 100%;
   height: 100%;
-}
-.mypage-contents.clearfix {
-  width: 1020px;
-  height: 1252px;
-  padding: 0 0 40px 0;
+  padding: 20px;
   display: flex;
   flex-flow: row-reverse;
   justify-content: space-between;
@@ -15,19 +11,15 @@
   
   .side-content {
     width: 30%;
-    height: 1252px;
-    margin: 0 40px 0 0;
+    margin: 0px 20px;
     display: block;
-    padding: 0;
     .mypage-nav {
-      margin-top: 16px;
       width: 280px;
       height: 1252px;
+      padding: 0px 10px;
       &-list {
-        width: 280px;
         height: 685px;
         list-style-type : none;
-        padding:5px 10px;
         &-item {
           width: 248px;
           position: relative;
@@ -44,15 +36,29 @@
             height: 14px;
           }
         }
+        &-unimplemented{
+          width: 248px;
+          position: relative;
+          display: block;
+          background: #fff;
+          font-size: 14px;
+          color: #ccc;
+          box-sizing: inherit;
+          padding: 16px;
+          line-height: 14px;
+          text-decoration: none;
+          .icon-arrow-right {
+            width: 8.594px;
+            height: 14px;
+          }
+        }
       }
       .mypage-nav-head-merpay {
-        width: 280px;
         color: #333;
         margin: 40px 0 0;
         font-size: 16px;
       }
       .mypage-nav-head-setting {
-        width: 280px;
         color: #333;
         margin: 40px 0 0;
         font-size: 16px;
@@ -62,13 +68,10 @@
 
   .main-content {
     width: 70%;
-    height: 1252px;
-    margin: 0;
     padding: 0;
     position: relative;
     
     .user {
-      margin-top: 20px;
       height: 160px;
       padding: 20px;
       position: relative;
@@ -99,89 +102,85 @@
         }
       }
     }
-  }
-}
 
+    .transaction{
+      &-history {
+        height: 100%;
+        margin: 40px 0 0 0;
+        background-color: White;
 
-
-.transaction-hisory {
-  width: 700px;
-  height: 382px;
-  margin: 40px 0 0 0;
-  background-color: White;
-  .header {
-    height: 72px;
-    padding: 0 16px;
-    color: #333;
-    background-color: #fafafa;
-    line-height: 72px;
-    display: block;
-    font-weight: bold;
-  }
-  .transaction-tabs {
-    width: 700px;
-    height: 74px;
-    list-style: none;
-    overflow: hidden;
-  }
-  .transaction-tabs li {
-    width: 30%;
-    height: 74px;
-    display: inline-block;
-    text-align: center;
-    line-height: 74px;
-    background: #eee;
-  }
-  .transaction-tabs li.select {
-    background: White;
-  }
-
-  .tab-content-transaction {
-    width: 700px;
-    height: 236px;
-    position: relative;
-  }
-    
-  li.tab-content-transaction__notfound {
-    background-repeat: no-repeat;
-    background-position: center 40px;
-    background-size: 78px 85px;
-    padding: 60px 0 60px;
-    background-image: image-url("logo-gray-icon.svg");
-    text-align: center;
-    font-size: 16px;
-    color: #ccc;
-    position: relative;
-  }
-  .transaction-item__link {
-    width: 668px;
-    min-height: 48px;
-    color: #333;
-    text-shadow: none;
-    padding: 16px;
-    display: block;
-    position: relative;
-    &__logo {
-      width: 48px;
-      height: 48px;
-      position: absolute;
-    }
-    &__body {
-      margin: 0 40px 0 68px;
-      width: 560px;
-      float: right;
-      padding: 0;
-      position: absolute;
-      min-height: 38px;
-      &__text {
-        width: 560px;
-        min-height: 21px;
-        font-size: 14px;
+        &-header {
+          height: 50px;
+          padding: 0 16px;
+          color: #333;
+          background-color: #fafafa;
+          line-height: 50px;
+          display: block;
+          font-weight: bold;
+        }
+        &-tabs {
+          height: 50px;
+          display: flex;
+          list-style: none;
+          overflow: hidden;
+          background-color: #f8f8f8;
+          &_select {
+            width: 30%;
+            display: inline-block;
+            text-align: center;
+            line-height: 50px;
+            background: White;
+          }
+          &_li {
+            width: 30%;
+            display: inline-block;
+            text-align: center;
+            line-height: 50px;
+          }
+        }
+        &-content {
+          li.tab-content-transaction__notfound {
+            background-repeat: no-repeat;
+            background-position: center 40px;
+            background-size: 78px 85px;
+            padding: 60px 0;
+            background-image: image-url("logo-gray-icon.svg");
+            text-align: center;
+            font-size: 16px;
+            color: #ccc;
+          }
+        }
+        .transaction-item__link {
+          width: 668px;
+          min-height: 48px;
+          color: #333;
+          text-shadow: none;
+          padding: 16px;
+          display: block;
+          position: relative;
+          &__logo {
+            width: 48px;
+            height: 48px;
+            position: absolute;
+          }
+          &__body {
+            margin: 0 40px 0 68px;
+            width: 560px;
+            float: right;
+            padding: 0;
+            position: absolute;
+            min-height: 38px;
+            &__text {
+              width: 560px;
+              min-height: 21px;
+              font-size: 14px;
+            }
+          }
+        }
       }
     }
   }
 }
-
 
 .clearfix:after {
   content: "";
