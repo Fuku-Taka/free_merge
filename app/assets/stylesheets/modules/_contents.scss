@@ -80,9 +80,9 @@ body {
     background-color: #f8f8f8;
     .ShowMain{
       width: 100vw;
-      height: 3100px;
+      height: 100%;
       padding: 40px;
-      margin: 0 auto;
+      margin: 0;
       &:after {
         display: block;
         content: "";
@@ -90,6 +90,7 @@ body {
       }
       .ContentRight{
         width: 700px;
+        height: 100%;
         margin: 0 auto;
         .TopContent{
           .ItemBox{
@@ -269,34 +270,37 @@ body {
                 
               }
             }
-            &__delete{
-              text-align: center;
-              .deleteBtn{
-                line-height: 30px;
-                background: red;
-                border: 1px solid red;
-                color: #fff;
-                font-size: 15px;
-                border-radius: 100px;
-                text-decoration: none;
-                padding: 5px;
-              }
-            }
             &__edit{
               text-align: center;
-              margin-top: 10px;
+              margin-top: 20px;
               .editBtn{
                 line-height: 30px;
                 background: #3CCACE;
                 border: 1px solid #3CCACE;
                 color: #fff;
+                padding: 10px 50px;
                 font-size: 15px;
                 border-radius: 100px;
                 text-decoration: none;
-                padding: 5px;
                 
               }
             }
+            &__delete{
+              text-align: center;
+              margin-top: 20px;
+              .deleteBtn{
+                line-height: 30px;
+                background: red;
+                border: 1px solid red;
+                color: #fff;
+                padding: 10px 50px;
+                font-size: 15px;
+                border-radius: 100px;
+                text-decoration: none;
+
+              }
+            }
+
           }
           .CommentBox{
             padding: 24px;
@@ -315,22 +319,19 @@ body {
               .noticeMsg {
                 padding: 8px;
                 font-size: 14px;
-                background-color: #f8f8f8;
                 margin: 10px 0;
-                text-align: left;
+                text-align: center;
               }
             }
             .commentBtn {
-              font-size: 18px;
               line-height: 30px;
               background: #3CCACE;
               border: 1px solid #3CCACE;
               color: #fff;
               padding: 10px 50px;
-              font-size: 18px;
+              font-size: 15px;
               border-radius: 100px;
-              position: relative;
-              top: 17px;
+              text-decoration: none;
             }
           }
         }
@@ -349,6 +350,7 @@ body {
           }
         }
         .RelatedItems {
+          height: 100%;
           &:after {
             display: block;
             content: "";
@@ -368,9 +370,10 @@ body {
               margin: 0 0 10px;
               float: left;
               width: calc(100% / 3);
+              height: 100%;
               a {
                 display: block;
-                margin: 24px 0 8px;
+                margin: 24px 0 0;
                 color: #3CCACE;
                 text-decoration: none;
                 font-weight: bold;
@@ -384,38 +387,33 @@ body {
                   margin: 0;
                   z-index: auto;
                 }
-                .ContentList__body {
-                  background-color: white;
-                  color: #333;
-                  padding: 16px;
-                  position: absolute;
-                  top: 150px;
-                  left: 0;
-                  width: 233.33px;
-                  .name {
-                    overflow: hidden;
-                    line-height: 1.5;
-                    font-size: 16px;
-                    text-align: left;
+              }
+              .ContentList__body {
+                background-color: white;
+                color: #333;
+                padding: 16px;
+                width: 233.33px;
+                .name {
+                  overflow: hidden;
+                  line-height: 1.5;
+                  font-size: 16px;
+                  text-align: left;
+                }
+                .Details {
+                  font-size: 16px;
+                  ul {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    li {
+                      display: inline-block;
+                      font-size: inherit;
+                      text-rendering: auto;
+                    }
                   }
-                  .Details {
-                    font-size: 16px;
-                    ul {
-                      display: flex;
-                      align-items: center;
-                      justify-content: space-between;
-                      li {
-                        i {
-                          display: inline-block;
-                          font-size: inherit;
-                          text-rendering: auto;
-                        }
-                      }
-                    }
-                    p {
-                      font-size: 10px;
-                      text-align: left;
-                    }
+                  p {
+                    font-size: 10px;
+                    text-align: left;
                   }
                 }
               }
@@ -424,6 +422,7 @@ body {
         }
       }
     }
+  }
 
       .Mainvisual{
         height: 300px;
@@ -644,6 +643,7 @@ body {
             width: 100vw;
             margin: 26px auto;
             display: flex;
+            justify-content: space-around;
             flex-flow: row wrap;
             .ProductList {
               width: 220px;
@@ -914,4 +914,3 @@ body {
       vertical-align: bottom;
     }
   }
-}

@@ -10,7 +10,7 @@
   margin:0 auto;
   
   .side-content {
-    width: 30%;
+    width: 260px;
     margin: 0px 20px;
     display: block;
     .mypage-nav {
@@ -67,10 +67,8 @@
   }
 
   .main-content {
-    width: 70%;
+    width: calc(100% - 260px);
     padding: 0;
-    position: relative;
-    
     .user {
       height: 160px;
       padding: 20px;
@@ -102,7 +100,6 @@
         }
       }
     }
-
     .transaction{
       &-history {
         height: 100%;

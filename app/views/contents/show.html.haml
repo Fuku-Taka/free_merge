@@ -1,7 +1,7 @@
 = render "header"
+
 .Main
   .ShowMain
-    .ContentLeft
     .ContentRight
       .TopContent
         .ItemBox
@@ -106,10 +106,10 @@
               .ItemBox__buy
                 = link_to "購入情報の確認", buy_content_path(@content.id), method: :get, class:"BuyConfirmationBtn"
             - if user_signed_in? && current_user.id == @content.seller_id
-              .ItemBox__delete
-                = link_to "削除する", content_path(@content.id), method: :delete, class:"deleteBtn"
               .ItemBox__edit
                 = link_to "編集する", edit_content_path(@content.id), method: :get, class:"editBtn"
+              .ItemBox__delete
+                = link_to "削除する", content_path(@content.id), method: :delete, class:"deleteBtn"
         .CommentBox
           = form_with(id: "new_comment") do |f|
             = f.text_area :content, class: 'commentbody'
@@ -132,17 +132,18 @@
             .ContentList
               = link_to content_path(content) do
                 = image_tag content.images[0].content_image.url, height: '150px', width: '100%'
-                .ContentList__body
-                  %h3.name
-                    = content.name
-                  .Details
-                    %ul
-                      %li
-                        = number_to_currency(content.price, unit: "円", strip_insignificant_zeros: true)
-                      %li
-                        = icon('fa', 'star')
-                        0
-                    %p (税込)
+              .ContentList__body
+                %h3.name
+                  = content.name
+                .Details
+                  %ul
+                    %li
+                      = number_to_currency(content.price, unit: "円", strip_insignificant_zeros: true)
+                    %li
+                      = icon('fa', 'star')
+                      0
+                  %p (税込)
+
   = render "app_banner"
   = render "purchase_btn"
 = render "footer"
