@@ -61,14 +61,12 @@
       .NotFirstChild {
         margin-top: 32px;
       }
-      .PriceChild {
-        margin-top: 24px;
-      }
       .ExhibitionForm__body {
         label {
           font-size: 14px;
           font-weight: 600;
           line-height: 1.4em;
+          margin-top: 24px;
         }
         .Required {
           margin-left: 8px;
@@ -123,8 +121,22 @@
             text-align: center;
           }
         }
-          
-        
+        .PriceBody {
+          align-items: center;
+          justify-content: space-between;
+          .PriceRight {;
+            display: flex;
+            align-items: center;
+            .FormBox {
+              width: 125px;
+              text-align: left;
+            }
+            h3 {
+              font-size: 20px;
+              margin: 16px 0 0 0;  
+            }
+          }
+        }
         .ExplanationCounter {
           margin-top: 16px;
           color: #888;
@@ -132,25 +144,10 @@
           line-height: 1.4em;
           text-align: right;
         }
-        .PriceBody {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          .PriceRight {
-            display: flex;
-            align-items: center;
-            .FormBox {
-              margin: 0;
-              width: 285px;
-              text-align: right;
-            }
-            h3 {
-              font-size: 14px;
-              margin-right: 8px;  
-            }
-          }
-        }
       }
+
+
+
       .ExhibitionForm__exhibition {
         margin: 0px auto 32px;
         width: 360px;
