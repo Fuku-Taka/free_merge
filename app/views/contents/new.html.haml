@@ -135,7 +135,7 @@
           .ExhibitionForm__normal
             %p.FormTitle
               価格（ ¥300 ~ ¥9,999,999 ）
-            .ExhibitionForm__body.PriceChild
+            .ExhibitionForm__body.NotFirstChild
               .PriceBody
                 .PriceLeft
                   .PriceTop__text
@@ -156,6 +156,7 @@
           .ExhibitionForm__precautions
             %p.PrecautionsText
               禁止されている行為および出品物を必ずご確認ください。
+              %br
               偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。
     .ContentsNew__bottomWrapper
       = link_to root_path do
