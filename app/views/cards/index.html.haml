@@ -1,7 +1,8 @@
 = render partial: "contents/header"
 .Main
-  .mypage_a  
+  .mypage_a
     %main.mypage-contents.clearfix
+      = render partial: "users/show_side"
       .Chapter
         .Chapter__title
           支払い方法
@@ -28,7 +29,7 @@
           .Chapter__inner__note
             = link_to "#", class: "inner-note" do
               支払い方法について ＞
-      = render partial: "users/show_side"
+      
   = render partial: "contents/app_banner"
   = render partial: "contents/purchase_btn"
 = render partial: "contents/footer"

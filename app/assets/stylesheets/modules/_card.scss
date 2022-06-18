@@ -1,173 +1,236 @@
-.Chapter{
-  width: 700px;
-  height: 358px;
-  float: right;
-  &__title{
-    width: 700px;
-    height: 100px;
-    background-color: #ffffff;
-    margin-top: 20px;
-    font-weight: bold;
-    font-size: 24px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  &__inner{
-    width: 700px;
-    height: 308px;
-    padding: 64px;
-    margin-top: 3px;
-    background-color: #ffffff;
-    &__content{
-      width: 300px;
-      height: 16px;
-      font-size: 16px;
-      font-weight: bold;
-    }
-    &__add{
-      border-bottom: 1px solid #eee;
-      width: 572px;
-      height: 107px;
+.Main{
+  .mypage_a{
+    .mypage-contents{
       display: flex;
-      justify-content: left;
-      margin-top: 32px;
-      .card-btn{
-        text-decoration: none;
-        width: 320px;
-        height: 50px;
-        text-align: center;
-        line-height: 3;
-        margin-top: 30px;
-        border-radius: 100px;
-      }
-    }
-    &__note{
-      text-align: right;
-      margin-top: 45px;
-    }
-    .inner-note{
-      color: #0099e8;
-      text-decoration: none;
-    }
-  }
-
-  &__credit{
-    width: 700px;
-    height: 500px;
-    margin: 3px;
-    background-color: #ffffff;
-
-    .C-content{
-      padding: 32px;
-
-      .essential{
-        &__box{
+      .Chapter{
+        width: 700px;
+        height: 358px;
+        float: right;
+        &__title{
+          width: 700px;
+          height: 100px;
+          background-color: #ffffff;
+          margin-top: 20px;
+          font-weight: bold;
+          font-size: 24px;
+          display: flex;
+          justify-content: center;
           align-items: center;
-          display: flex;
-          &__label{
-            font-size: 14px;
-            font-weight: 600;
-            line-height: 1.4em;
-          }
-          &__need{
-            margin-left: 8px;
-            font-size: 12px;
-            padding: 0, 4px;
-            background-color: #ff0211;
-            color: #fff;
-          }
         }
-        .input-number{
-          border: 1px solid #ccc;
-          border-radius: 4px;
-          box-sizing: border-box;
-          font-family: inherit;
-          font-size: inherit;
-          height: 48px;
-          margin-top: 9px;
-          outline: none;
-          padding: 0 16px;
-          width: 315px;
-        }
-        .card-list{
-          display: flex;
+        &__inner{
+          width: 700px;
+          height: 308px;
+          padding: 64px;
           margin-top: 3px;
-          &__icon{
-            margin: 3px;
+          background-color: #ffffff;
+          &__content{
+            width: 300px;
+            height: 16px;
+            font-size: 16px;
+            font-weight: bold;
           }
-        }
-      }
-
-      .cards-expire{
-        margin-top: 28px;
-        &__wrap{
-          display: flex;
-          margin-top: 9px;
-          &__item{
+          &__add{
+            border-bottom: 1px solid #eee;
+            width: 572px;
+            height: 107px;
             display: flex;
-            #exp_month{
-              appearance: none;
-              background-color: #fff;
-              border: 1px solid #ccc;
-              border-radius: 4px;
-              box-sizing: border-box;
-              color: #222;
-              font-size: 16px;
-              height: 48px;
-              line-height: 1;
-              margin: 0;
-              outline: none;
-              padding: 0 56px 0 16px;
-              width: 100%;
-            }
-            #exp_year{
-              appearance: none;
-              background-color: #fff;
-              border: 1px solid #ccc;
-              border-radius: 4px;
-              box-sizing: border-box;
-              color: #222;
-              font-size: 16px;
-              height: 48px;
-              line-height: 1;
-              margin: 0;
-              outline: none;
-              padding: 0 56px 0 16px;
-              width: 100%;
-            }
-            .inputSelect{
-              bottom: 0;
-              margin: auto;
-              pointer-events: none;
-            }
-            .expire-text{
-              margin: auto;
-              width: 25px;
+            justify-content: left;
+            margin-top: 32px;
+            .card-btn{
+              text-decoration: none;
+              width: 320px;
+              height: 50px;
               text-align: center;
+              line-height: 3;
+              margin-top: 30px;
+              border-radius: 100px;
+            }
+          }
+          &__note{
+            text-align: right;
+            margin-top: 45px;
+          }
+          .inner-note{
+            color: #0099e8;
+            text-decoration: none;
+          }
+        }
+
+        &__credit{
+          width: 700px;
+          height: 500px;
+          margin: 3px;
+          background-color: #ffffff;
+
+          .C-content{
+            padding: 32px;
+
+            .essential{
+              &__box{
+                align-items: center;
+                display: flex;
+                &__label{
+                  font-size: 14px;
+                  font-weight: 600;
+                  line-height: 1.4em;
+                }
+                &__need{
+                  margin-left: 8px;
+                  font-size: 12px;
+                  padding: 0, 4px;
+                  background-color: #ff0211;
+                  color: #fff;
+                }
+              }
+              .input-number{
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+                font-family: inherit;
+                font-size: inherit;
+                height: 48px;
+                margin-top: 9px;
+                outline: none;
+                padding: 0 16px;
+                width: 315px;
+              }
+              .card-list{
+                display: flex;
+                margin-top: 3px;
+                &__icon{
+                  margin: 3px;
+                }
+              }
+            }
+
+            .cards-expire{
+              margin-top: 28px;
+              &__wrap{
+                display: flex;
+                margin-top: 9px;
+                &__item{
+                  display: flex;
+                  #exp_month{
+                    appearance: none;
+                    background-color: #fff;
+                    border: 1px solid #ccc;
+                    border-radius: 4px;
+                    box-sizing: border-box;
+                    color: #222;
+                    font-size: 16px;
+                    height: 48px;
+                    line-height: 1;
+                    margin: 0;
+                    outline: none;
+                    padding: 0 56px 0 16px;
+                    width: 100%;
+                  }
+                  #exp_year{
+                    appearance: none;
+                    background-color: #fff;
+                    border: 1px solid #ccc;
+                    border-radius: 4px;
+                    box-sizing: border-box;
+                    color: #222;
+                    font-size: 16px;
+                    height: 48px;
+                    line-height: 1;
+                    margin: 0;
+                    outline: none;
+                    padding: 0 56px 0 16px;
+                    width: 100%;
+                  }
+                  .inputSelect{
+                    bottom: 0;
+                    margin: auto;
+                    pointer-events: none;
+                  }
+                  .expire-text{
+                    margin: auto;
+                    width: 25px;
+                    text-align: center;
+                  }
+                }
+              }
+            }
+            .c-content-bottom{
+              margin-top: 28px;
+              &__add-btn{
+                width: 315px;
+                background-color: #3ccace;
+                color: #fff;
+                font-size: 17px;
+                min-height: 48px;
+                padding: 0 24px;
+                border-radius: 4px;
+                border: 1px solid transparent;
+                box-sizing: border-box;
+                display: inline-block;
+                font-weight: 600;
+                line-height: 1;
+                overflow: hidden;
+                text-align: center;
+                text-decoration: none;
+              }
             }
           }
         }
       }
-      .c-content-bottom{
-        margin-top: 28px;
-        &__add-btn{
-          width: 315px;
-          background-color: #3ccace;
-          color: #fff;
-          font-size: 17px;
-          min-height: 48px;
-          padding: 0 24px;
-          border-radius: 4px;
-          border: 1px solid transparent;
-          box-sizing: border-box;
-          display: inline-block;
-          font-weight: 600;
-          line-height: 1;
-          overflow: hidden;
-          text-align: center;
-          text-decoration: none;
-        }
+      .side-content {
+        width: 260px;
+        margin: 0px 20px;
+        display: block;
+        .mypage-nav {
+          width: 280px;
+          height: 1252px;
+          padding: 0px 10px;
+          &-list {
+            height: 685px;
+            list-style-type : none;
+            &-item {
+              width: 248px;
+              position: relative;
+              display: block;
+              background: #fff;
+              font-size: 14px;
+              color: #333;
+              box-sizing: inherit;
+              padding: 16px;
+              line-height: 14px;
+              text-decoration: none;
+              .icon-arrow-right {
+                width: 8.594px;
+                height: 14px;
+              }
+            }
+            &-unimplemented{
+              width: 248px;
+              position: relative;
+              display: block;
+              background: #fff;
+              font-size: 14px;
+              color: #ccc;
+              box-sizing: inherit;
+              padding: 16px;
+              line-height: 14px;
+              text-decoration: none;
+              .icon-arrow-right {
+                width: 8.594px;
+                height: 14px;
+              }
+            }
+          }
+          .mypage-nav-head-merpay {
+            color: #333;
+            margin: 40px 0 0;
+            font-size: 16px;
+          }
+          .mypage-nav-head-setting {
+            color: #333;
+            margin: 40px 0 0;
+            font-size: 16px;
+          }
+        }     
       }
     }
   }
