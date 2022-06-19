@@ -7,7 +7,9 @@
       .ExhibitionForm
         = form_with model: @content, local: true do |f|
           .ExhibitionForm__normal
-            .ExhibitionForm__body
+            %p.FormTitle
+              商品
+            .ExhibitionForm__body.NotFirstChild
               .PhotosTop
                 .PhotosTop__text
                   %label
