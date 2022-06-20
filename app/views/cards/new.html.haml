@@ -2,6 +2,7 @@
 .Main
   .mypage_a
     %main.mypage-contents.clearfix
+      = render partial: "users/show_side"
       .Chapter
         .Chapter__title
           クレジットカード情報入力
@@ -62,7 +63,7 @@
 
                 .c-content-bottom#card_token
                   = f.submit "登録する", class: "c-content-bottom__add-btn", id: "token_submit"
-      = render partial: "users/show_side"
+      
   = render partial: "contents/app_banner"
   = render partial: "contents/purchase_btn"
 = render partial: "contents/footer"
